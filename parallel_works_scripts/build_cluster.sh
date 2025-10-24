@@ -44,6 +44,7 @@ set -o pipefail
 #   --source=REPO:MODE       For REPO in {ngen, nwm-cal-mgr, ngen-forcing, nwm-verf, nwm-fcst-mgr},
 #                            MODE is build or pull. Can be repeated.
 #   --source-default=MODE    Global default (build|pull) for the above repos (optional).
+#   --branch=BRANCH         Specify a custom branch to build from (optional).
 #   repo names               List of repos to build (space-separated), or use "all"
 #
 # Supported repos:
@@ -65,6 +66,9 @@ mkdir -p "$SINGULARITY_DIR"
 # redirect stdout and stderr to a log file in the singularity directory
 LOGFILE="${SINGULARITY_DIR}/build_cluster_$(date -u +"%Y-%m-%dT%H:%M:%SZ").log"
 exec > >(tee -i "$LOGFILE") 2>&1
+
+# Branch selection for building
+CUSTOM_BRANCH=""
 
 REPOS=(
     "ngencerf-ui"
@@ -137,6 +141,12 @@ parse_args() {
             --build-type)
                 shift; BUILD_TYPE="$1"
             ;;
+            --branch=*)
+                CUSTOM_BRANCH="${1#*=}"
+            ;;
+            --branch)
+                shift; CUSTOM_BRANCH="$1"
+            ;;
             --source-default=*)
                 IMAGE_SOURCE_DEFAULT="${1#*=}" # build|pull
             ;;
@@ -178,6 +188,10 @@ if [[ -z "$BUILD_TYPE" && -t 0 ]]; then
         3) BUILD_TYPE="release-candidate" ;;
         *) echo "Invalid choice, exiting."; exit 1 ;;
     esac
+
+    if [[ "$BUILD_TYPE" != "release" ]]; then
+        read -p "Enter custom branch to build from (press Enter to use ${BUILD_TYPE}): " CUSTOM_BRANCH
+    fi
 fi
 
 if [[ ${#SELECTED_REPOS[@]} -eq 0 && -t 0 ]]; then
@@ -351,14 +365,15 @@ build_singularity_container_update_symlink() {
 # update repo to latest from specified branch
 update_repo_branch() {
     local repo="$1"
-    local branch="$2"
+    local default_branch="$2"
 
-    echo "Updating $repo to latest from $branch branch..."
+    local branch_to_use="${CUSTOM_BRANCH:-$default_branch}"
+    echo "Updating $repo to latest from $branch_to_use branch..."
     cd "$BASE_PATH/$repo"
     git fetch origin
     git stash save
-    git checkout "$branch"
-    git pull origin "$branch" --rebase
+    git checkout "$branch_to_use"
+    git pull origin "$branch_to_use" --rebase
     git stash pop || true # prevent exit if no stash
     if [[ "$repo" == "ngen" ]]; then
         git submodule update --init --recursive
