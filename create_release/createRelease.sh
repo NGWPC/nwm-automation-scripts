@@ -690,13 +690,24 @@ process_submodules() {
   echo "return here to continue."
   echo
 
-    # Wait for user confirmation
+  # Wait for user confirmation
   while true; do
     read -r -p "Have you finished handling all submodules? (Y to continue, N to abort): " ans
     case "$ans" in
-      [Yy]* ) echo "Continuing with release process..."; return 0 ;;
-      [Nn]* ) echo "Aborting as requested."; return 1 ;;
-      * ) echo "Please answer Y or N." ;;
+      [Yy]* )
+        echo "Continuing with release process..."
+        echo "Running recursive submodule update to ensure all submodules are in sync..."
+        git submodule update --init --recursive
+        echo -e "${GREEN}Submodules updated successfully.${NC}"
+        return 0
+        ;;
+      [Nn]* )
+        echo "Aborting as requested."
+        return 1
+        ;;
+      * )
+        echo "Please answer Y or N."
+        ;;
     esac
   done
 
