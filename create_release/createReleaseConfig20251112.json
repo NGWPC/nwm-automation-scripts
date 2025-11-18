@@ -1,0 +1,219 @@
+[
+    {
+        "repo_directory" : "~/ngwpc/repositories/bmi-cxx",
+        "release": "3.1.0.4.0",
+        "previous_release_tag": "0.1.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "commit_summary" : "Removed deprecated version file.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/cfe",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System. Groundwater flux storage warning fix.",
+        "commit_summary" : "Extensive enhancements and cleanup across the CFE model and its configuration, testing, and logging systems. Major functional updates include improvements to runoff, infiltration, Nash cascade parameters, AET calculations, and soil moisture handling, along with numerous fixes for unit consistency, memory allocation issues, and error conditions. The logging framework was standardized and refined, including level corrections and reduced noise from warnings. Initial serialization support for model state was added and aligned with a revised protocol. Significant cleanup efforts removed unused or outdated files, updated documentation, improved config structures, and ensured compatibility with UDUNITS2. Continuous integration workflows were streamlined, and tests, realization files, and configuration defaults were updated for correctness and consistency. Overall, the changes increase model stability, correctness, and maintainability while aligning the codebase with current standards and workflows.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/evapotranspiration",
+        "release": "3.1.0.0.0",
+        "previous_release_tag": "0.0.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "commit_summary" : "Updates focus primarily on introducing and refining initial BMI state serialization, including new serialize/deserialize functions and updates to align with a revised protocol. Supporting changes include initialization fixes for the PET model and updates to .gitmodules to reference the NGWPC GitHub organization. Several version file updates were made to track releases and release candidates, along with the removal of obsolete files such as version.txt. Licensing language was updated to incorporate RTX and OWP government requirements. Overall, the changes improve model interoperability, version management, and compliance.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lgar-c",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "commit_summary" : "Introduce and refine initial BMI state serialization across components, including new serialization methods for LGAR and updates to match a revised protocol. Several assertions were replaced with structured EWTS messages or converted into logged errors that throw exceptions, improving robustness and error handling. Additional updates include logging-level adjustments, a check for logging enablement, and cleanup tasks such as deleting obsolete files, updating .gitignore, and adding release, branching, and project-automation metadata. Licensing for the LGAR-C repository was also updated to reflect OWP government requirements. Overall, the changes enhance stability, logging consistency, and project infrastructure.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lstm",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "0.0.0",
+        "release_notes": "GitHub Initial Release: Initial version integrated into ngen and ngenCERF.",
+        "commit_summary" : "Introduce formal licensing by adding both a license file and the previous licensing text, strengthen logging by adding an internal configuration flag and converting print statements to logger.debug calls, and implement a new Error and Warning Trapping System for more structured error handling. Documentation was also improved, specifically for the first_containing component.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen-forcing",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "GitHub Initial Release: netcdf to csv script. Refactor extraction scripts, pre-process streamflow output for coastal.",
+        "commit_summary" : "Extensive improvements across the forcing engine, coastal workflows, CI/CD pipelines, Docker and Singularity container builds, and time-handling logic for multiple data sources including AnA, MRMS, HRRR, AORC, and NWM. Major work includes substantial enhancements to supplemental precipitation handling, expanded support for regional workflows (Alaska, Puerto Rico, CONUS retrospective), merged SFINCS and SCHISM preprocessing pipelines, and numerous fixes to forcing extraction, mesh creation, BMI wrappers, and overall data-downloading utilities. The commits also introduce new configuration templates, improved exception handling, restructured scripts, refined directory and path management, added use cases, and expanded logging. Significant cleanup was performed—including removing problematic files, consolidating duplicated logic, and updating licenses and documentation—while CI/CD saw repeated refinements to streamline builds and integrate new coastal components. Overall, these changes advance workflow stability, modularity, compatibility with new containers and clusters, and broader support for high-resolution and multi-model forecasting workflows.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-cal-mgr",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.3.0",
+        "release_notes": "GitHub Initial Release: LSTM. Fix GWO plot issue, ngen mpi run updates, logger updates.",
+        "commit_summary" : "Extensive maintenance and feature updates across the calibration and workflow management system, including fixes to objective-function errors, pydantic validation issues, event metrics, and paths, along with improvements to messaging, formatting, and package structure. Several updates refine dependencies and container builds—such as adjustments to mswm, hypy, Dockerfile optimizations, relaxed version requirements, and CI/CD pipeline corrections—while also introducing renaming across the codebase (e.g., ngen-cal to nwm-cal-mgr) and adding support for LSTM and other single-execution models. Enhancements include better error handling, additional diagnostics, worker identification files, improved plotting behavior, MPI-related logic corrections, updated environment variable conventions, and performance improvements. Numerous documentation updates, cleanup tasks, and reversions to stabilize builds further contribute to strengthening reliability, consistency, and workflow automation throughout the system.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-eval-mgr",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.0.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "commit_summary" : "Updates focus on renaming and cleanup: ngen.eval was renamed to nwm.eval, a plotting error for event metrics was fixed, a .gitignore file was added, and the obsolete version.txt was deleted.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-fcst-mgr",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "GitHub Initial Release: Allow csv forcing, use path intstead of netcdf file.",
+        "commit_summary" : "Enhance the forecast manager workflow, including adding ngen_results_dir, supporting separate cold start and forecast calls, and updating nwm-fcst-mgr for compatibility with the new workflow. Logging and error handling were improved, and scripts were updated to pass forcing file paths and support CSV forcing. Docker and CI/CD files were refined to fix release builds, manage dependencies via virtual environments, and streamline repository usage. Documentation and README updates reflect the new argument structure and workflow changes, and version.txt was removed.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-msw-mgr",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "commit_summary" : "Extensive development across configuration generation, regionalization workflows, forcing engine integration, forecast and calibration systems, and example file maintenance. Major enhancements included adding BMI forcing engine support, expanding regionalization capabilities (Topmodel, SFT/SMP, LSTM), refining realization and configuration file structures, improving handling of variable names, units, lookup tables, and pydantic validation, and aligning logic with upstream EDFS, ngen-forcing, and calibration manager changes. Numerous fixes addressed bugs in path handling, time adjustments, attribute mismatches, parameter defaults, symbolic links, station/variable naming, and workflow compatibility. Forecast functionality saw significant upgrades, including historical forcing engines, improved cycle/date handling, cold-start logic, and expanded configuration templates. The documentation, examples, logging system, and dependency management were also repeatedly updated, culminating in broad cleanup, refactoring, and removal of deprecated files and features, alongside multiple reversions to maintain stability during major feature merges.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-region-mgr",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "commit_summary" : "Extensive development across workflow automation, container-based execution, regionalization algorithms, configuration generation, and documentation cleanup. Major updates include adding Docker workflows and templates for running NGEN and MSWM, introducing new configuration structures and refactoring the codebase into a unified package, and implementing numerous bug fixes related to geometry handling, gage pairing, VPU logic, spatial distance calculations, and nested basin detection. Significant enhancements were made to regionalization—including donor caching, manual pairings, clustering and distance algorithms, and integration with formulation-based regionalization—accompanied by new utilities, plotting functions, evaluation configs, and unit tests. Throughout, deprecated files were removed, imports simplified, logging improved, performance optimized, and README content repeatedly updated to support new workflows and containerized execution, culminating in a substantially modernized, cleaner, and more maintainable codebase.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-verf",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.0.0",
+        "release_notes": "GitHub Initial Release: Updates addressing memory concerns, support oCONUS, TEEHR patch for Alaska. Bug fixes.",
+        "commit_summary" : "Clean up and consolidate the codebase, updating plotting and metric capabilities, and enhancing support for calibration, regionalization, and domain-based analyses. Input and crosswalk files were consolidated, NWM/NGEN naming standardized, and file formats converted to CSV. Docker and CI/CD pipelines were heavily updated to streamline builds, reduce unnecessary pulls/pushes, and support GitHub migration. Logging, README, and example configurations were improved, while bugs in event metrics, TEERH, locations, and AK patches were fixed. Additional updates include support for oCONUS, Jupyter notebook demos, and addressing OWP concerns. Minor formatting, comment, and typo fixes were also applied throughout.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-docker",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.1.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-server",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.3.0",
+        "release_notes": "GitHub Initial Release: LSTM. MPI Support. Updated CLI, Normalze CRS in gpkg, extend temp token, download zip, deep-copy fix, formulation rules, moved when data verification occurs, CFE Rootzone, and more.",
+        "commit_summary" : "Extensive improvements across job management, filtering/sorting, performance, logging, and workflow reliability. Numerous fixes were made to retry logic, migrations, job cancellation, cold-start handling, caching, and CLI behavior, while new features such as pagination, date-range filtering, additional indexes, soil-moisture support, regionalization, enhanced diagnostics, and expanded configuration options were added. The codebase underwent multiple refactors to reduce duplication, improve read-only database usage, streamline job creation, and enhance performance—especially for validation, iteration updates, and S3/cloud-based workflows. Logging was consolidated, made more robust, and integrated with logrotate, with better error reporting and clearer messaging throughout. Verification and forecast workflows were overhauled with new endpoints, updated models, improved template handling, and more consistent field naming. Numerous dependency updates, Dockerfile/CICD adjustments, cleanup passes, and reversions of experimental changes were included, culminating in a more stable, performant, and feature-complete system.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-ui",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "GitHub Initial Release: LSTM. Compare permutations. Log control. View logs in Calibration for all jobs. Notification Log. About info. Users Guide. Formulation Rules. Lock job feature. CFE Rootzone. Bug Fixes.",
+        "commit_summary" : "Extensive UI, workflow, and verification enhancements across Calibration, Evaluation, and Forecast features. Major improvements include better logging and status handling, clearer error messaging, refined interval management, expanded help documentation, and streamlined workflows for running, validating, and monitoring jobs. Numerous fixes address timeseries viewing, tab navigation, form validation, gage and formulation settings, plot/log retrieval, and handling of submitted/running/failed states. The work also adds support for new data sources, improves EDS error checking, updates CI/CD and Node/Nuxt dependencies, reorganizes layouts, unifies styling and labels, and incorporates substantial help file updates and PDF integration. Overall, the changes focus on stability, usability, clearer status reporting, improved verification capabilities, and more consistent and maintainable UI behavior throughout the application.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/noah-owp-modular",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.1.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "commit_summary" : "Implement and refine initial serialization and deserialization in the BMI for state saving, including adoption of transfer_values_from_mp, proper allocation/deallocation, serialization_size handling, and full support for all potential variables. Logging was standardized with hierarchical levels, redundant prints removed, and standalone logger usage documented and tested. Compiler warnings, integer division issues, and platform-specific fixes were addressed, while build instructions, Makefiles, and messagepack integration were updated. Minor housekeeping included trimming strings, flushing stdout, deleting version.txt, and updating the license file to OWP government requirements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/sac-sma",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "commit_summary" : "Implement and refine initial serialization and deserialization routines for state saving, including support for new state variables (itime, time_dbl), temporary byte buffers, 64-bit integer handling, and per-HRU deserialization. Logging was improved with hierarchical log levels, removal of redundant stdout prints, and updated logger usage for standalone runs. Several commits address code formatting, Makefile touchups, whitespace cleanup, and compiler compatibility. Documentation was updated to reflect logger usage, version.txt was deleted, and the license file was revised for OWP government requirements. Merges from GitHub master were incorporated, and snow17 parameter-saving issues were fixed.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/schism",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "commit_summary" : "No changes from initial version of the repository received by RTX.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SFINCS",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "v2.0.8",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "commit_summary" : "Licensing language was updated to incorporate RTX and OWP government requirements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SLoTH",
+        "release": "3.1.0.4.0",
+        "previous_release_tag": "0.1.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "commit_summary" : "Updates include normalizing 'none-ish' values to UDUNITS '1', updating the .gitmodules file to point to the NGWPC GitHub repository, merging changes from the remote github/master branch, deleting version.txt, and updating the license file to incorporate OWP government language.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/snow17",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "commit_summary" : "Improve logging, unit handling, and cross-platform compatibility. Log levels were adjusted, redundant prints were removed, and logging steps were enhanced for standalone testing. Snow17-related fixes addressed negative RAIM values, SWE/snow depth unit issues, parameter saving, and proper assignment of surface pressure and scaled precipitation. Compiler compatibility was improved with variable initialization, type declarations, and intent() adjustments for Intel and Apple M3 Max CPUs. Documentation and examples were updated for consistency, version.txt was deleted, and the license file was revised to reflect OWP government language. Merges from the GitHub master branch were also incorporated.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilfreezethaw",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.1.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "commit_summary" : "Updates to initial BMI serialization and deserialization for state saving, adapting state serialization to the revised protocol, and normalizing “none-ish” values for UDUNITS. Validation logic was improved (allowing 0 for quartz), memory leaks were fixed, and additional logging was added with detailed messages before asserts. Constructor enhancements were made for vector handling in config files, minor typos and formatting issues were corrected, and housekeeping tasks included deleting version.txt, updating the license file, and cleaning up miscellaneous code. Logging behavior was adjusted with new level mappings, and environment handling was improved by retrieving the home directory from environment variables.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilmoistureprofiles",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.1.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "commit_summary" : "Updates focus on completing and refining initial BMI state saving, including new serialization and deserialization functions and adapting the implementation to a revised protocol, while reverting an earlier incorrect merge related to this work. Additional changes include normalizing “none-ish” values to the UDUNITS “1,” applying and reverting formatting-only updates, integrating changes from the upstream GitHub repository, and removing an obsolete version file. The commits also add a new OWP government license file for the SoilMoistureProfiles repository and fix issues in the NGen integration workflow.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/t-route",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "0.0.0",
+        "release_notes": "GitHub Initial Release: Gage parsing case-insensitive. hl_link fix. Log Control of Error and Warning Trapping System.",
+        "commit_summary" : "Major improvements to BMI functionality, logging, NetCDF generation, and T-Route integration. BMI capabilities were expanded with static and type-conserving value handling, updated dataframe-backed state management, and NGEN-specific refinements. Logging was significantly enhanced with added timing, clearer error reporting, standardized log levels, and migration from legacy print statements. NetCDF output handling was streamlined by removing deprecated functions, unifying fill/missing values, fixing filename and path issues, and adding support for single-file lake outputs. Numerous bug fixes address dataframe slicing warnings, configuration validation, reservoir and RFC flow handling, t-route metadata issues, geospatial layer corrections, and outdated Pydantic behaviors. Several patches improve error handling, formatting, YAML-driven processing, case-insensitive parsing, and compatibility with updated hydrofabric versions. Additional updates include CI/packaging fixes, removal of unused code, version file updates, licensing changes, and integration of new RnR and T-Route domain logic. Overall, the commits focus on robustness, modernizing interfaces, improving reliability of hydrologic model outputs, and tightening logging and configuration consistency across the system.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/topmodel",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "0.1.0",
+        "release_notes": "GitHub Initial Release: Add Error and Warning Trapping System.",
+        "commit_summary" : "Introduce and refine BMI state-serialization by adding new serialization functions and adapting them to an updated protocol, while also reverting an incorrect merge related to BMI serialization. Logging underwent substantial cleanup and standardization, including new EWTS enable-flag handling, corrected log levels, replacing printf calls with the unified Log interface, updating naming and environment-variable conventions, and adding config-related log entries. Several small fixes address typos, incorrect module names, and formatting issues, along with ensuring startup-only logging checks and flushing stdout when needed. Additional maintenance includes removing unused modules and deleting an obsolete version file.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ueb_bmi",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.3.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "commit_summary" : "Refine the UEB BMI implementation and logging system, add initial state-serialization support including creating dedicated serialization functions, and adapting the code to a revised protocol. Several fixes improve the standalone one-cell example, including restoring mistakenly removed lines, adding clearer headers, updating input files, and removing outdated multi-cell sample data while adding benchmark and reference outputs for verification. Logging received extensive cleanup—migrating messages to appropriate INFO/WARNING/SEVERE levels, unifying usage through a static Logger class and LOG macro, adjusting default log paths, and improving initialization behavior. Additional housekeeping includes indentation cleanup, updating .gitignore for CMake artifacts, and removing a version file.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.3.0",
+        "release_notes": "GitHub Initial Release: LSTM. Submodule commit updates. Read log config file for logging control. Caching improvements.",
+        "commit_summary" : "Update a wide range of NGen components, with extensive submodule synchronizations across hydrologic models, routing (T-Route), and supporting libraries, alongside major improvements to MPI stability, Python–C++ interoperability, unit-conversion error handling, and logging. Refined initial BMI serialization for state saving, expanded output-variable configuration formats, clearer warnings and error messages, improved NetCDF and CSV data-provider behavior, better handling of sentinel features and nexus structures, and numerous bug fixes involving offsets, IDs, variable units, and routing data aggregation. The work also enhances Docker, CI/CD, and CMake build infrastructure; introduces LSTM model support; cleans up deprecated or duplicated code; makes logging safer and more consistent; and updates documentation, tests, and release-management procedures. Overall, the changes focus on robustness, correctness, clarity, and aligning all submodules toward release-candidate branches.",
+        "has_submodules": true,
+        "skip": false
+    }
+]
