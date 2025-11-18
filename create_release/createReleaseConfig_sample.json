@@ -3,6 +3,7 @@
     {
     "repo_directory" : "~/projects/peter_test1",
     "release": "11.4",
+    "previous_release": "11.3",
     "release_notes": "add notes here",
     "ngencerf_version": "new version",
     "ngencerf_date": "2025-02-20"

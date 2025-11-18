@@ -790,6 +790,27 @@ process_repo() {
   echo -e "$start_time ${GREEN}Processing repository: $repo_directory (Release: $RELEASE_NUMBER)${NC}"
   echo
 
+  # --- PR MODE: create a branch ngwpc-<release> based on $RELEASE_BRANCH and exit ---
+  if [ "$RELEASE_TYPE" = "PR" ]; then
+    local new_branch="ngwpc-$base_release_number"
+
+    echo -e "${GREEN}PR mode: Creating branch $new_branch from $RELEASE_BRANCH...${NC}"
+
+    git fetch --quiet origin "$RELEASE_BRANCH"
+    git checkout --quiet -b "$new_branch" "origin/$RELEASE_BRANCH"
+
+    if git_push --set-upstream origin "$new_branch"; then
+      echo -e "${GREEN}Created and pushed $new_branch successfully.${NC}"
+    else
+      echo -e "${RED}Failed to push $new_branch.${NC}"
+      return 1
+    fi
+
+    # Nothing else to do for PR mode
+    return 0
+  fi
+
+
   echo -e "${YELLOW}Proceed with processing this repository? (C)ontinue, (S)kip, (Q)uit [default: C in 60s]:${NC}"
   read -t 60 -n 1 -s -r user_input
   echo
@@ -1059,7 +1080,7 @@ main() {
     RELEASE_TYPE=$(echo "$RELEASE_TYPE" | tr '[:lower:]' '[:upper:]')
   fi
 
-  if [[ "$RELEASE_TYPE" != "OFFICIAL" && "$RELEASE_TYPE" != "RC" ]]; then
+  if [[ "$RELEASE_TYPE" != "OFFICIAL" && "$RELEASE_TYPE" != "RC" && "$RELEASE_TYPE" != "PR" ]]; then
     echo -e "${RED}Invalid release type. Must be either OFFICIAL or RC.${NC}"
     echo
     usage
@@ -1074,6 +1095,14 @@ main() {
     usage
     exit 1
   fi
+
+  # Validate JSON before doing anything else
+  if ! jq empty "$json_file" >/dev/null 2>&1; then
+    echo -e "${RED}Error: JSON file '$json_file' is invalid and could not be parsed.${NC}"
+    echo -e "${YELLOW} jq reported a syntax error. Fix the JSON and try again.${NC}"
+    exit 1
+  fi
+
 
   # Third argument: wait time for mergeable check (default to 1 minute)
   WAIT_TIME="${3:-60}"
