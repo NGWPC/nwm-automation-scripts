@@ -13,6 +13,54 @@ REPOS=(
 )
 
 # ------------------------------------------------------------------------------
+# Help Function
+# ------------------------------------------------------------------------------
+show_help() {
+    cat << EOF
+Usage: $(basename "$0") [OPTIONS]
+
+This script automates the setup and configuration of an NGENCERF cluster environment.
+It performs the following tasks:
+  1. Clones required repositories from GitHub (NGWPC organization)
+  2. Sets up configuration files for ngencerf-server
+  3. Loads static data from AWS S3
+  4. Builds Singularity containers for all services
+  5. Sets up nginx container
+
+This is an interactive script that will prompt you to:
+  - Edit configuration files (database credentials, paths, tags)
+  - Provide temporary AWS credentials for data download
+
+Prerequisites:
+  - Git installed and configured
+  - AWS CLI installed
+  - Docker and Singularity/Apptainer installed
+  - Access to NGWPC GitHub repositories
+  - AWS credentials with access to ngwpc-dev S3 bucket
+  - Sudo privileges for directory creation
+
+Options:
+  -h, --help    Display this help message and exit
+
+Repositories cloned:
+EOF
+    for repo in "${REPOS[@]}"; do
+        echo "  - $repo"
+    done
+
+    cat << EOF
+
+Target directory: $NGENCERF_APP
+
+Examples:
+  $(basename "$0")          Run the full cluster configuration
+  $(basename "$0") -h       Display this help message
+
+EOF
+    exit 0
+}
+
+# ------------------------------------------------------------------------------
 # Helper: Prompt user with a message, then open the file in an editor
 # ------------------------------------------------------------------------------
 edit_file_with_message() {
@@ -39,6 +87,22 @@ edit_file_with_message() {
     fi
 }
 
+# ------------------------------------------------------------------------------
+# Parse Command Line Arguments
+# ------------------------------------------------------------------------------
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help)
+            show_help
+            ;;
+        *)
+            echo "Error: Unknown option: $1"
+            echo "Use -h or --help for usage information."
+            exit 1
+            ;;
+    esac
+    shift
+done
 
 cd $NGENCERF_APP
 
