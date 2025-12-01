@@ -39,7 +39,7 @@ def normalize_output_filename(filename: str, mode: str) -> str:
 # ------------------------------------------------------------
 # Generate markdown output
 # ------------------------------------------------------------
-def generate_markdown(repo_info, output_file):
+def generate_markdown(repo_info):
     repo_dir = os.path.expanduser(repo_info["repo_directory"])
     release = repo_info["release"]
     prev = repo_info["previous_release_tag"]
@@ -67,8 +67,7 @@ def generate_markdown(repo_info, output_file):
 
     md.append("\n")
 
-    with open(output_file, "a") as f:
-        f.write("\n".join(md))
+    return "\n".join(md)
 
 # ------------------------------------------------------------
 # Generate text output
@@ -163,6 +162,39 @@ def get_commit_messages(repo_dir, release, prev):
 def repo_title(path):
     return Path(path).name
 
+# ---------------------------------------------------------
+# Insert Markdown Table of Contents at top of document
+# ---------------------------------------------------------
+def insert_markdown_toc(md_file):
+    """Insert a TOC containing only repo titles (## headings)."""
+    with open(md_file, "r") as f:
+        lines = f.readlines()
+
+    toc_entries = []
+
+    for line in lines:
+        # Match repo title headings:  ## RepoName
+        if line.startswith("## "):
+            heading = line.strip()[3:]  # remove "## "
+
+            # Skip the main "Table of Contents" heading
+            if heading.lower() == "table of contents":
+                continue
+
+            # Build anchor
+            anchor = heading.lower().replace(" ", "-")
+            toc_entries.append(f"- [{heading}](#{anchor})")
+
+    # Replace placeholder
+    new_lines = []
+    for line in lines:
+        if line.strip() == "<!--TOC-->":
+            new_lines.append("\n".join(toc_entries) + "\n\n")
+        else:
+            new_lines.append(line)
+
+    with open(md_file, "w") as f:
+        f.writelines(new_lines)
 
 # ---------------------------------------------------------
 # MAIN
@@ -207,9 +239,8 @@ def main():
     with open(args.config) as f:
         repos = json.load(f)
 
-    if md_output_file:
-        with open(md_output_file, "w") as f:
-            f.write(f"# Release Notes ({datetime.now().strftime('%Y-%m-%d')})\n")
+    all_md_sections = []
+
     if txt_output_file:
         with open(txt_output_file, "w") as f:
             f.write(f"Release Notes ({datetime.now().strftime('%Y-%m-%d')})\n")
@@ -231,11 +262,17 @@ def main():
             generate_text(repo, txt_output_file)
 
         if md_output_file:
-            generate_markdown(repo, md_output_file)
+            all_md_sections.append(generate_markdown(repo))
 
     if txt_output_file:
         print(f"✅ Done — Testfile written to: {txt_output_file}")
     if md_output_file:
+        with open(md_output_file, "w") as f:
+            f.write(f"# Release Notes ({datetime.now().strftime('%Y-%m-%d')})\n\n")
+            f.write("## Table of Contents\n")
+            f.write("<!--TOC-->\n\n")
+            f.write("\n\n".join(all_md_sections))
+        insert_markdown_toc(md_output_file)
         print(f"✅ Done — Markdown written to: {md_output_file}")
 
 if __name__ == "__main__":
