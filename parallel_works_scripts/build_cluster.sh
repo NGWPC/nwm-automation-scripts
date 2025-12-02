@@ -354,7 +354,12 @@ fi
 
 if [[ ${#SELECTED_REPOS[@]} -eq 0 && -t 0 ]]; then
     echo "Available repos: ${REPOS[*]}"
-    read -p "Enter repos to build (space-separated from the list above): " -a SELECTED_REPOS
+    read -p "Enter repos to build (space-separated from the list above, or press Enter for all): " -a SELECTED_REPOS
+    # if user pressed Enter without typing anything, select all repos
+    if [[ ${#SELECTED_REPOS[@]} -eq 0 ]]; then
+        SELECTED_REPOS=("${REPOS[@]}")
+        echo "All repos selected: ${SELECTED_REPOS[*]}"
+    fi
 fi
 
 if [[ -z "$BUILD_TYPE" || ${#SELECTED_REPOS[@]} -eq 0 ]]; then
