@@ -88,9 +88,21 @@ else
     echo "warn: $SRC_NGEN_SCRIPT not found or unreadable; skipping /usr/local/bin/ngen installation" >&2
 fi
 
-# add ngencerf-server logrotate job to root's crontab
-CRON_ENTRY='0 10,22 * * * [ -f /ngencerf-app/ngencerf-server/logrotate-ngencerf.prod.conf ] && /usr/sbin/logrotate -f /ngencerf-app/ngencerf-server/logrotate-ngencerf.prod.conf'
+# add ngencerf-server logrotate job to /etc/cron.d
+# note: added root before the command, which is required for /etc/cron.d files
+LOGROTATE_CONF="/ngencerf-app/ngencerf-server/logrotate-ngencerf.prod.conf"
+CRON_FILE='/etc/cron.d/ngencerf-logrotate'
+CRON_JOB="0 10,22 * * * root [ -f $LOGROTATE_CONF ] && /usr/sbin/logrotate -f $LOGROTATE_CONF"
 
-( sudo crontab -l 2>/dev/null; echo "$CRON_ENTRY" ) | sudo crontab -
+echo "$CRON_JOB" | sudo tee "$CRON_FILE" > /dev/null
+sudo chmod 0644 "$CRON_FILE"
+
+# set permissions on the logrotate config if it exists
+if [ -f "$LOGROTATE_CONF" ]; then
+    sudo chown root:root "$LOGROTATE_CONF"
+    sudo chmod 0644 "$LOGROTATE_CONF"
+else
+    echo "warn: $LOGROTATE_CONF not found; skipping permission fix."
+fi
 
 echo "cluster startup complete"
