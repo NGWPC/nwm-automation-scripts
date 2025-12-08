@@ -520,8 +520,12 @@ reorder_repos_by_dependency() {
     for repo in "${priority_order[@]}"; do
         if [[ " ${remaining[*]} " =~ " ${repo} " ]]; then
             ordered+=("$repo")
-            # remove from remaining
-            remaining=("${remaining[@]/$repo}")
+            # remove from remaining (exact match only, not substring)
+            local new_remaining=()
+            for r in "${remaining[@]}"; do
+                [[ "$r" != "$repo" ]] && new_remaining+=("$r")
+            done
+            remaining=("${new_remaining[@]}")
         fi
     done
 
