@@ -80,6 +80,9 @@ REPOS=(
 )
 REGISTRY="ghcr.io/ngwpc"
 
+# DEBUG: Show REPOS array at script start
+echo "[DEBUG] REPOS array at start: ${REPOS[*]}"
+
 BUILD_TYPE=""
 SELECTED_REPOS=()
 
@@ -371,9 +374,14 @@ set_image_source_defaults
 # expand 'all'
 if [[ " ${SELECTED_REPOS[*]} " =~ " all " ]]; then
     echo "'all' specified — building all available repos."
+    echo "[DEBUG] REPOS array before expansion: ${REPOS[*]}"
     SELECTED_REPOS=("${REPOS[@]}")
+    echo "[DEBUG] SELECTED_REPOS after 'all' expansion: ${SELECTED_REPOS[*]}"
     echo "Repos to build: ${SELECTED_REPOS[*]}"
 fi
+
+# DEBUG: Show final SELECTED_REPOS before validation
+echo "[DEBUG] SELECTED_REPOS before validation: ${SELECTED_REPOS[*]}"
 
 # validate repos
 INVALID_REPOS=()
