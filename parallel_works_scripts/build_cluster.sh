@@ -652,9 +652,11 @@ prompt_dependency_tags "$BUILD_TYPE"
 
 # reorder repos to respect dependencies
 reorder_repos_by_dependency
+echo "[DEBUG] SELECTED_REPOS after reorder_repos_by_dependency: ${SELECTED_REPOS[*]}"
 
 # validate dependencies
 validate_dependencies
+echo "[DEBUG] SELECTED_REPOS after validate_dependencies: ${SELECTED_REPOS[*]}"
 
 
 # build SIF and update symlink
