@@ -446,8 +446,8 @@ get_repo_branch() {
 prompt_dependency_tags() {
     local build_type="$1"
 
-    # only applicable to feature builds
-    [[ "$build_type" != "feature" ]] && return 0
+    # only applicable to feature and release builds
+    [[ "$build_type" != "feature" && "$build_type" != "release" ]] && return 0
     [[ ! -t 0 ]] && return 0  # not interactive
 
     # check if ngen is selected or needed
@@ -479,6 +479,22 @@ prompt_dependency_tags() {
             local tag="${ans:-$default_tag}"
             DEPENDENCY_TAGS["nwm-cal-mgr"]="$tag"
             DEPENDENCY_TAGS["nwm-fcst-mgr"]="$tag"
+        fi
+    fi
+
+    # prompt for nwm-eval-mgr branch/tag if nwm-verf is selected
+    if [[ " ${SELECTED_REPOS[@]} " =~ " nwm-verf " ]]; then
+        if [[ "$build_type" == "feature" ]]; then
+            local default_branch="feature"
+            if [[ -z "${DEPENDENCY_TAGS[nwm-verf]:-}" ]]; then
+                read -p "Which nwm-eval-mgr branch do you want nwm-verf to use? (default: ${default_branch}): " ans
+                DEPENDENCY_TAGS["nwm-verf"]="${ans:-$default_branch}"
+            fi
+        elif [[ "$build_type" == "release" ]]; then
+            if [[ -z "${DEPENDENCY_TAGS[nwm-verf]:-}" ]]; then
+                read -p "Which nwm-eval-mgr release tag do you want nwm-verf to use?: " ans
+                DEPENDENCY_TAGS["nwm-verf"]="${ans}"
+            fi
         fi
     fi
 }
@@ -551,6 +567,9 @@ if [[ "$BUILD_TYPE" == "release" ]]; then
             ngen)
                 if [[ -z "${TAGS[ngen]:-}" ]]; then
                     read -p "Enter ngen tag: " TAGS[ngen]
+                fi
+                if [[ -z "${TAGS[ngen-forcing]:-}" ]]; then
+                    read -p "Enter ngen-forcing tag (used by ngen): " TAGS[ngen-forcing]
                 fi
             ;;
             nwm-cal-mgr)
@@ -842,8 +861,8 @@ if [[ "$BUILD_TYPE" == "release" ]]; then
         if [[ "${IMAGE_SOURCE[ngen]}" == "build" ]]; then
             checkout_repo_tag "ngen" "${TAGS[ngen]}"
 
-            # determine ngen-forcing tag (use explicit tag if ngen-forcing is selected, otherwise use ngen's tag)
-            local forcing_tag="${TAGS[ngen-forcing]:-${TAGS[ngen]}}"
+            # use ngen-forcing tag (prompted when ngen is selected)
+            local forcing_tag="${TAGS[ngen-forcing]}"
 
             echo "[$(date '+%H:%M:%S')] Building ngen Docker image with NGEN_FORCING_TAG=${forcing_tag}"
             docker build --progress=plain --no-cache \
@@ -1210,9 +1229,13 @@ if [[ "$BUILD_TYPE" == "feature" ]]; then
                 if [[ "${IMAGE_SOURCE[nwm-verf]}" == "build" ]]; then
                     if [[ -d "${BASE_PATH}/nwm-verf" ]]; then
                         update_repo_branch "nwm-verf" "feature"
-                        echo "[$(date '+%H:%M:%S')] Building nwm-verf (feature) Docker image"
+
+                        # determine nwm-eval-mgr tag to use
+                        local nwm_eval_mgr_tag="${DEPENDENCY_TAGS[nwm-verf]:-feature}"
+
+                        echo "[$(date '+%H:%M:%S')] Building nwm-verf (feature) Docker image with NWM_EVAL_MGR_TAG=${nwm_eval_mgr_tag}"
                         docker build --progress=plain --no-cache \
-                            --build-arg NWM_EVAL_MGR_TAG="feature" \
+                            --build-arg NWM_EVAL_MGR_TAG="${nwm_eval_mgr_tag}" \
                             --tag="${REGISTRY}/nwm-verf:feature" \
                             "${BASE_PATH}/nwm-verf"
                     else
