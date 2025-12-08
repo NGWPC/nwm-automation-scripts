@@ -1062,14 +1062,19 @@ if [[ "$BUILD_TYPE" == "development" ]]; then
             ;;
         esac
 
+        # DEBUG: Show which repo is being processed
+        echo "[DEBUG] Processing repo: '$repo' from SELECTED_REPOS: ${SELECTED_REPOS[*]}"
+
         # for each repo that produces a SIF, use the locally built image if mode==build,
         # otherwise pull the image
         if repo_has_sif "$repo"; then
+            echo "[DEBUG] Repo '$repo' produces SIF, images: $(images_for_repo "$repo")"
             for pair in $(images_for_repo "$repo"); do
                 [[ -z "$pair" ]] && continue
                 docker_img="${pair%%|*}"
                 sif_name="${pair##*|}"
                 IMAGE="${REGISTRY}/${docker_img}:latest"
+                echo "[DEBUG] Extracted docker_img='$docker_img', sif_name='$sif_name', IMAGE='$IMAGE'"
 
                 if [[ "${IMAGE_SOURCE[$repo]}" != "build" ]]; then
                     echo "[$(date '+%H:%M:%S')] Pulling docker image for SIF: $IMAGE"
@@ -1251,18 +1256,24 @@ if [[ "$BUILD_TYPE" == "feature" ]]; then
             ;;
         esac
 
+        # DEBUG: Show which repo is being processed
+        echo "[DEBUG] Processing repo: '$repo' from SELECTED_REPOS: ${SELECTED_REPOS[*]}"
+
         # for each repo that produces a SIF, use the locally built image if mode==build,
         # otherwise pull the specified tag and retag as :feature
         if repo_has_sif "$repo"; then
+            echo "[DEBUG] Repo '$repo' produces SIF, images: $(images_for_repo "$repo")"
             for pair in $(images_for_repo "$repo"); do
                 [[ -z "$pair" ]] && continue
                 docker_img="${pair%%|*}"
                 sif_name="${pair##*|}"
+                echo "[DEBUG] Extracted docker_img='$docker_img', sif_name='$sif_name'"
 
                 if [[ "${IMAGE_SOURCE[$repo]}" != "build" ]]; then
                     # use tag from TAGS array if pulling, otherwise default to :feature
                     pull_tag="${TAGS[$repo]:-feature}"
                     pull_image="${REGISTRY}/${docker_img}:${pull_tag}"
+                    echo "[DEBUG] pull_image='$pull_image'"
                     echo "[$(date '+%H:%M:%S')] Pulling docker image for SIF: $pull_image"
                     docker pull "$pull_image"
 
