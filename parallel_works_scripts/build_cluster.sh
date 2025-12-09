@@ -80,9 +80,6 @@ REPOS=(
 )
 REGISTRY="ghcr.io/ngwpc"
 
-# DEBUG: Show REPOS array at script start
-echo "[DEBUG] REPOS array at start: ${REPOS[*]}"
-
 BUILD_TYPE=""
 SELECTED_REPOS=()
 
@@ -374,14 +371,9 @@ set_image_source_defaults
 # expand 'all'
 if [[ " ${SELECTED_REPOS[*]} " =~ " all " ]]; then
     echo "'all' specified — building all available repos."
-    echo "[DEBUG] REPOS array before expansion: ${REPOS[*]}"
     SELECTED_REPOS=("${REPOS[@]}")
-    echo "[DEBUG] SELECTED_REPOS after 'all' expansion: ${SELECTED_REPOS[*]}"
     echo "Repos to build: ${SELECTED_REPOS[*]}"
 fi
-
-# DEBUG: Show final SELECTED_REPOS before validation
-echo "[DEBUG] SELECTED_REPOS before validation: ${SELECTED_REPOS[*]}"
 
 # validate repos
 INVALID_REPOS=()
@@ -656,11 +648,9 @@ prompt_dependency_tags "$BUILD_TYPE"
 
 # reorder repos to respect dependencies
 reorder_repos_by_dependency
-echo "[DEBUG] SELECTED_REPOS after reorder_repos_by_dependency: ${SELECTED_REPOS[*]}"
 
 # validate dependencies
 validate_dependencies
-echo "[DEBUG] SELECTED_REPOS after validate_dependencies: ${SELECTED_REPOS[*]}"
 
 
 # build SIF and update symlink
@@ -1076,19 +1066,14 @@ if [[ "$BUILD_TYPE" == "development" ]]; then
             ;;
         esac
 
-        # DEBUG: Show which repo is being processed
-        echo "[DEBUG] Processing repo: '$repo' from SELECTED_REPOS: ${SELECTED_REPOS[*]}"
-
         # for each repo that produces a SIF, use the locally built image if mode==build,
         # otherwise pull the image
         if repo_has_sif "$repo"; then
-            echo "[DEBUG] Repo '$repo' produces SIF, images: $(images_for_repo "$repo")"
             for pair in $(images_for_repo "$repo"); do
                 [[ -z "$pair" ]] && continue
                 docker_img="${pair%%|*}"
                 sif_name="${pair##*|}"
                 IMAGE="${REGISTRY}/${docker_img}:latest"
-                echo "[DEBUG] Extracted docker_img='$docker_img', sif_name='$sif_name', IMAGE='$IMAGE'"
 
                 if [[ "${IMAGE_SOURCE[$repo]}" != "build" ]]; then
                     echo "[$(date '+%H:%M:%S')] Pulling docker image for SIF: $IMAGE"
@@ -1270,24 +1255,18 @@ if [[ "$BUILD_TYPE" == "feature" ]]; then
             ;;
         esac
 
-        # DEBUG: Show which repo is being processed
-        echo "[DEBUG] Processing repo: '$repo' from SELECTED_REPOS: ${SELECTED_REPOS[*]}"
-
         # for each repo that produces a SIF, use the locally built image if mode==build,
         # otherwise pull the specified tag and retag as :feature
         if repo_has_sif "$repo"; then
-            echo "[DEBUG] Repo '$repo' produces SIF, images: $(images_for_repo "$repo")"
             for pair in $(images_for_repo "$repo"); do
                 [[ -z "$pair" ]] && continue
                 docker_img="${pair%%|*}"
                 sif_name="${pair##*|}"
-                echo "[DEBUG] Extracted docker_img='$docker_img', sif_name='$sif_name'"
 
                 if [[ "${IMAGE_SOURCE[$repo]}" != "build" ]]; then
                     # use tag from TAGS array if pulling, otherwise default to :feature
                     pull_tag="${TAGS[$repo]:-feature}"
                     pull_image="${REGISTRY}/${docker_img}:${pull_tag}"
-                    echo "[DEBUG] pull_image='$pull_image'"
                     echo "[$(date '+%H:%M:%S')] Pulling docker image for SIF: $pull_image"
                     docker pull "$pull_image"
 
