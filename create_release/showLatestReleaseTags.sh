@@ -26,6 +26,19 @@ Options:
 Tag behavior (RC only):
   skip = true      → use <release> tag
   skip = false     → use highest <release>-rc<number> tag
+
+Minimal example JSON config:
+
+[
+    {
+        "repo_directory": "~/ngwpc/repositories/noah-owp-modular",
+        "release": "3.1.2.0.0"
+    }
+]
+
+Notes:
+- 'repo_directory' supports '~' for the home directory.
+- 'skip' is optional. Defaults to false when release_type is RC.
 EOF
 }
 
