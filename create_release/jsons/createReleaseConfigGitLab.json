@@ -1,0 +1,141 @@
+[
+    {
+        "repo_directory" : "~/ngwpc/bmi-cxx",
+        "release": "3.1.0.2.0",
+        "release_notes": "Removed version.txt.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/cfe",
+        "release": "3.1.1.3.0",
+        "release_notes": "Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/evapotranspiration",
+        "release": "3.1.0.2.0",
+        "release_notes": "Removed version.txt.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/lgar-c",
+        "release": "3.1.1.3.0",
+        "release_notes": "Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/lstm",
+        "release": "3.1.1.0.0",
+        "release_notes": "Initial version integrated into ngen and ngenCERF.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngen-cal",
+        "release": "3.1.1.4.0",
+        "release_notes": "LSTM. Fix GWO plot issue, ngen mpi run updates, logger updates.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngen-eval",
+        "release": "3.1.1.1.0",
+        "release_notes": "Removed version.txt.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngen-fcst",
+        "release": "3.1.1.3.0",
+        "release_notes": "Allow csv forcing, use path intstead of netcdf file.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngen-forcing",
+        "release": "3.1.1.3.0",
+        "release_notes": "netcdf to csv script. Refactor extraction scripts, pre-process streamflow output for coastal.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngen-verf",
+        "release": "3.1.1.1.0",
+        "release_notes": "Updates addressing memory concerns, support oCONUS, TEEHR patch for Alaska. Bug fixes.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngencerf-docker",
+        "release": "3.1.1.2.0",
+        "release_notes": "Removed version.txt.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngencerf_ui",
+        "release": "3.1.1.3.0",
+        "release_notes": "LSTM. Compare permutations. Log control. View logs in Calibration for all jobs. Notification Log. About info. Users Guide. Formulation Rules. Lock job feature. Bug Fixes.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngencerf-server",
+        "release": "3.1.1.4.0",
+        "release_notes": "LSTM. MPI Support. Update CLI, Normalze CRS in gpkg, extend temp token, download zip, deep-copy fix, formulation rules, moved when data verification occurs and more.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/noah-owp-modular",
+        "release": "3.1.1.2.0",
+        "release_notes": "Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/sac-sma",
+        "release": "3.1.1.3.0",
+        "release_notes": "Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/SLoTH",
+        "release": "3.1.0.2.0",
+        "release_notes": "Removed version.txt.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/snow17",
+        "release": "3.1.1.3.0",
+        "release_notes": "Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/soilfreezethaw",
+        "release": "3.1.1.2.0",
+        "release_notes": "Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/soilmoistureprofiles",
+        "release": "3.1.1.2.0",
+        "release_notes": "Removed version.txt.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/t-route",
+        "release": "3.1.1.2.0",
+        "release_notes": "Gage parsing case-insensitive. hl_link fix. Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/topmodel",
+        "release": "3.1.1.0.0",
+        "release_notes": "Add Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ueb_bmi",
+        "release": "3.1.1.4.0",
+        "release_notes": "Log Control of Error and Warning Trapping System.",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/ngen",
+        "release": "3.1.1.4.0",
+        "release_notes": "LSTM. Submodule commit updates. Read log config file to logging control. Caching improvements. Updates from GitHub",
+        "has_submodules": true,
+        "skip": true
+    }
+]

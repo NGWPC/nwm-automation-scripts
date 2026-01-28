@@ -1,0 +1,165 @@
+[
+    {
+        "repo_directory" : "~/ngwpc/repositories/bmi-cxx",
+        "release": "3.1.0.4.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/cfe",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System. Groundwater flux storage warning fix.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/evapotranspiration",
+        "release": "3.1.0.0.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lgar-c",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lstm",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Initial version integrated into ngen and ngenCERF.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen-forcing",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: netcdf to csv script. Refactor extraction scripts, pre-process streamflow output for coastal.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-cal-mgr",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: LSTM. Fix GWO plot issue, ngen mpi run updates, logger updates.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-eval-mgr",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-fcst-mgr",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Allow csv forcing, use path intstead of netcdf file.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-msw-mgr",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-region-mgr",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-verf",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Updates addressing memory concerns, support oCONUS, TEEHR patch for Alaska. Bug fixes.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-docker",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-server",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: LSTM. MPI Support. Updated CLI, Normalze CRS in gpkg, extend temp token, download zip, deep-copy fix, formulation rules, moved when data verification occurs, CFE Rootzone, and more.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-ui",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: LSTM. Compare permutations. Log control. View logs in Calibration for all jobs. Notification Log. About info. Users Guide. Formulation Rules. Lock job feature. CFE Rootzone. Bug Fixes.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/noah-owp-modular",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/sac-sma",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/schism",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SFINCS",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Initial version.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SLoTH",
+        "release": "3.1.0.4.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/snow17",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilfreezethaw",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilmoistureprofiles",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Removed version.txt.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/t-route",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Gage parsing case-insensitive. hl_link fix. Log Control of Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/topmodel",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Add Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ueb_bmi",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: Log Control of Error and Warning Trapping System.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen",
+        "release": "3.1.2.0.0",
+        "release_notes": "GitHub Initial Release: LSTM. Submodule commit updates. Read log config file for logging control. Caching improvements.",
+        "has_submodules": true,
+        "skip": false
+    }
+]
