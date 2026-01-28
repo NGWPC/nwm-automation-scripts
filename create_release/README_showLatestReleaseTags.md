@@ -29,3 +29,20 @@ Scans git repositories listed in a JSON config file and prints either the releas
 |---------------|----------|
 | `true`        | Use `<release>` tag |
 | `false`       | Use the highest release candidate `<release>-rc<number>` tag |
+
+## Example JSON Config Entry
+
+```json
+{
+    "repo_directory": "~/ngwpc/repositories/noah-owp-modular",
+    "release": "3.1.2.0.0",
+    "previous_release_tag": "1.1.0",
+    "release_notes": "",
+    "commit_summary": "",
+    "skip": true
+}
+```
+
+> Notes:
+> - `repo_directory` supports `~` for the home directory.  
+> - `skip` determines whether to select the final release tag (`true`) or the highest release candidate tag (`false`) when `release_type` is `RC`.
