@@ -1,4 +1,4 @@
-# find_merges.sh
+# findMerges.sh
 
 `findMerges.sh` scans a JSON configuration file containing `repo_directory` entries and reports which repositories have changes on a target branch after a specified date/time.
 
@@ -87,19 +87,19 @@ Only `repo_directory` is used by this script.
 ### Default behavior (merge commits only, just list repos)
 
 ```bash
-./find_merges.sh -a "2026-01-27 19:15:08"
+./findMerges.sh -a "2026-01-27 19:15:08"
 ```
 
 ### Detect rebases and squash merges
 
 ```bash
-./find_merges.sh -a "2026-01-27 19:15:08" --mode any
+./findMerges.sh -a "2026-01-27 19:15:08" --mode any
 ```
 
 ### Verbose: list all matching commits
 
 ```bash
-./find_merges.sh -a "2026-01-27 19:15:08" --mode any -v
+./findMerges.sh -a "2026-01-27 19:15:08" --mode any -v
 ```
 
 Example output:
@@ -116,13 +116,13 @@ cfe                        | 2026-01-28 | 19fe0aa  | Update docs (#419)
 ### Scan a different branch
 
 ```bash
-./find_merges.sh -a "2026-01-27 19:15:08" -b development --mode any
+./findMerges.sh -a "2026-01-27 19:15:08" -b development --mode any
 ```
 
 ### Use an alternate config file
 
 ```bash
-./find_merges.sh -a "2026-01-27 19:15:08" -c altConfig.json --mode any
+./findMerges.sh -a "2026-01-27 19:15:08" -c altConfig.json --mode any
 ```
 
 ---
