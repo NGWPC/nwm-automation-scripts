@@ -8,14 +8,14 @@ DEFAULT_MODE="any"   # merges | any
 usage() {
   cat <<'EOF'
 Usage:
-  find_merges.sh -a "<after-datetime>" [-c <config.json>] [-b <branch>] [-v] [--mode merges|any] [-h]
+  findMerges.sh -a "<after-datetime>" [-c <config.json>] [-b <branch>] [-v] [--mode merges|any] [-h]
 
 Description:
   Scans repo_directory entries in a JSON config file.
 
   Modes:
-    --mode merges  (default) : shows only merge commits (will NOT catch rebase/squash fast-forward merges)
-    --mode any               : shows any commits added to the branch after the cutoff time (catches rebase/squash)
+    --mode any (default) : shows any commits added to the branch after the cutoff time (catches rebase/squash)
+    --mode merges        : shows only merge commits (will NOT catch rebase/squash fast-forward merges)
 
   By default (non-verbose), it prints only the repositories that had changes.
   With -v (verbose), it prints the matching commits in the summary table.
