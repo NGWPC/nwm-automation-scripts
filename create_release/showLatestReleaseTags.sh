@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 DEFAULT_CONFIG="createReleaseConfig.json"
 DEFAULT_RELEASE_TYPE="RC"
+
+# Track latest tag across all scanned repos
+LATEST_TAG_DATE=""
+LATEST_TAG_REPO=""
+LATEST_TAG_NAME=""
 
 usage() {
     cat <<EOF
@@ -12,6 +19,8 @@ Description:
   Scans git repositories listed in a JSON config file and prints either the
   release tag or the highest release candidate tag (-rcX), along with
   the tag creation date and associated commit hash.
+
+  Also prints (at the end) the latest tag date found across all scanned repos.
 
 Arguments:
   config.json     Optional. Path to JSON config file.
@@ -43,7 +52,7 @@ EOF
 }
 
 # Help option
-if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
     usage
     exit 0
 fi
@@ -58,6 +67,11 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
     exit 1
 fi
 
+if ! command -v jq >/dev/null 2>&1; then
+    echo "❌ jq is required but not installed."
+    exit 1
+fi
+
 # Table header
 printf "\n%-25s | %-25s | %-20s | %-40s\n" \
        "Repository" "Tag" "Tag Date" "Commit"
@@ -67,7 +81,8 @@ printf "%-25s-+-%-25s-+-%-20s-+-%-40s\n" \
        "--------------------" \
        "----------------------------------------"
 
-jq -c '.[]' "$CONFIG_FILE" | while read -r entry; do
+# IMPORTANT: Use process substitution to avoid subshell so we can print summary at the end
+while IFS= read -r entry; do
     repo_dir=$(echo "$entry" | jq -r '.repo_directory')
     release=$(echo "$entry" | jq -r '.release')
     skip=$(echo "$entry" | jq -r '.skip // false')
@@ -81,7 +96,28 @@ jq -c '.[]' "$CONFIG_FILE" | while read -r entry; do
         continue
     fi
 
-    cd "$repo_dir" || continue
+    pushd "$repo_dir" >/dev/null
+
+    # --- NEW: Track latest tag in this repo (any tag), for end-of-run summary ---
+    # iso-strict compares cleanly as a string (YYYY-MM-DDTHH:MM:SS±HH:MM)
+    latest_tag_line="$(
+        git for-each-ref \
+            --sort=-creatordate \
+            --format='%(creatordate:iso-strict)|%(refname:short)' \
+            refs/tags 2>/dev/null | head -n 1 || true
+    )"
+
+    if [[ -n "$latest_tag_line" ]]; then
+        repo_latest_date="${latest_tag_line%%|*}"
+        repo_latest_tag="${latest_tag_line#*|}"
+
+        if [[ -z "$LATEST_TAG_DATE" || "$repo_latest_date" > "$LATEST_TAG_DATE" ]]; then
+            LATEST_TAG_DATE="$repo_latest_date"
+            LATEST_TAG_REPO="$repo_name"
+            LATEST_TAG_NAME="$repo_latest_tag"
+        fi
+    fi
+    # --------------------------------------------------------------------------
 
     tag=""
     tag_date="-"
@@ -95,7 +131,7 @@ jq -c '.[]' "$CONFIG_FILE" | while read -r entry; do
             tag="(not found)"
         fi
     else
-        # RC behavior 
+        # RC behavior
         if [[ "$skip" == "true" ]]; then
             # Final release tag
             if git rev-parse -q --verify "refs/tags/${release}" >/dev/null; then
@@ -105,11 +141,14 @@ jq -c '.[]' "$CONFIG_FILE" | while read -r entry; do
             fi
         else
             # Highest RC tag
-            highest_rc=$(git tag \
-                | grep "^${release}-rc[0-9]\+$" \
-                | sed "s/^${release}-rc//" \
-                | sort -n \
-                | tail -1)
+            highest_rc=$(
+                git tag \
+                  | grep "^${release}-rc[0-9]\+$" \
+                  | sed "s/^${release}-rc//" \
+                  | sort -n \
+                  | tail -1 \
+                  || true
+            )
 
             if [[ -n "$highest_rc" ]]; then
                 tag="${release}-rc${highest_rc}"
@@ -120,22 +159,33 @@ jq -c '.[]' "$CONFIG_FILE" | while read -r entry; do
     fi
 
     if [[ "$tag" != "(none)" && "$tag" != "(not found)" ]]; then
-        # Annotated tag date (ISO, no timezone)
-        tag_date=$(git for-each-ref \
-            --format='%(taggerdate:iso8601-strict)' "refs/tags/${tag}")
+        # Annotated tag date
+        tag_date="$(git for-each-ref --format='%(taggerdate:iso8601-strict)' "refs/tags/${tag}" || true)"
 
         # Fallback for lightweight tags → commit date
         if [[ -z "$tag_date" ]]; then
-            tag_date=$(git show -s --format=%cd --date=format:'%Y-%m-%d %H:%M:%S' "$tag")
+            tag_date="$(git show -s --format=%cd --date=format:'%Y-%m-%d %H:%M:%S' "$tag" || true)"
         else
-            # Strip timezone from annotated tag date
+            # Strip timezone from annotated tag date (keep behavior you had)
             tag_date="${tag_date%+*}"
             tag_date="${tag_date%Z}"
         fi
 
-        commit_hash=$(git rev-list -n 1 "$tag")
+        commit_hash="$(git rev-list -n 1 "$tag" || true)"
+        [[ -n "$commit_hash" ]] || commit_hash="-"
     fi
 
     printf "%-25s | %-25s | %-20s | %-40s\n" \
            "$repo_name" "$tag" "$tag_date" "$commit_hash"
-done
+
+    popd >/dev/null
+done < <(jq -c '.[]' "$CONFIG_FILE")
+
+# --- NEW: Print latest tag date across all scanned repos ---
+printf "\nLatest tag date (across scanned repos)\n"
+printf "=============================================================\n"
+if [[ -n "$LATEST_TAG_DATE" ]]; then
+    printf "  %s | %s | %s\n" "$LATEST_TAG_DATE" "$LATEST_TAG_REPO" "$LATEST_TAG_NAME"
+else
+    printf "  (no tags found in scanned repositories)\n"
+fi
