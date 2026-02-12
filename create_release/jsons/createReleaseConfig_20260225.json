@@ -1,0 +1,255 @@
+[
+    {
+        "repo_directory" : "~/ngwpc/repositories/bmi-cxx",
+        "upstream_repo": "NOAA-OWP/bmi-cxx",
+        "release": "3.1.0.4.0",
+        "previous_release_tag": "0.1.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/cfe",
+        "upstream_repo": "NOAA-OWP/cfe",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "GetLogLevel and IsLoggingEnabled public methods",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/evapotranspiration",
+        "upstream_repo": "NOAA-OWP/evapotranspiration",
+        "release": "3.1.0.0.0",
+        "previous_release_tag": "0.0.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lgar-c",
+        "upstream_repo": "NOAA-OWP/lgar-c",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "",
+        "commit_summary" : "Add Ponded Water Depth, define GetLogLevel",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lstm",
+        "upstream_repo": "NOAA-OWP/lstm",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "",
+        "commit_summary" : "Add precipitation as an output variable, used named logger",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-docker",
+        "upstream_repo": "NOAA-OWP/ngencerf-docker",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.1.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-server",
+        "upstream_repo": "NOAA-OWP/ngencerf-server",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Broaden forecast runs, update verification runs, diagnostics, updates for slurm, add ability for admin to change user password, clone forcing fix, redis cache clear, gunicorn diagnostics, bug fixes.",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-ui",
+        "upstream_repo": "NOAA-OWP/ngencerf-ui",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Expand forecast, add verification, and view logs. Objective function wording. UTC labeling. Removed User Upload. Added Required asterisks. Bug fixes.",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen-forcing",
+        "upstream_repo": "NOAA-OWP/ngen-forcing",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "",
+        "commit_summary" : "BMI Forcing updated, remove data and binary files from coastal code, bug fixes and more debug output for failure.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-cal-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-cal-mgr",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "netCDF fix, formatting updtes, correct objective function attribute error, pkbias updates, fixed bugs for event metrics calculation",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/data-assimilation-engine",
+        "upstream_repo": "NOAA-OWP/data-assimilation-engine",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "",
+        "release_notes": "Initial Release.",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-eval-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-eval-mgr",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "Correct RMSE and MAE functions for NaN",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-fcst-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-fcst-mgr",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-msw-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-msw-mgr",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Better exception handling, generate output variables for validation and not calibration runs, support writing layers of soil moisture. Fix float to string conversion for SMP config.",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-region-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-region-mgr",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "",
+        "commit_summary" : "Increase urf memory efficiency, bug fixes, update docs.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-verf",
+        "upstream_repo": "NOAA-OWP/nwm-verf",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Detect missing values in the streamflow observation data, fix AnA bugs",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/noah-owp-modular",
+        "upstream_repo": "NOAA-OWP/noah-owp-modular",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.1.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/sac-sma",
+        "upstream_repo": "NOAA-OWP/sac-sma",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "1.2.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/schism",
+        "upstream_repo": "NOAA-OWP/schism",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SFINCS",
+        "upstream_repo": "NOAA-OWP/SFINCS",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "v2.0.8",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SLoTH",
+        "upstream_repo": "NOAA-OWP/SLoTH",
+        "release": "3.1.0.4.0",
+        "previous_release_tag": "0.1.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/snow17",
+        "upstream_repo": "NOAA-OWP/snow17",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilfreezethaw",
+        "upstream_repo": "NOAA-OWP/soilfreezethaw",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "Define GetLogLevel",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilmoistureprofiles",
+        "upstream_repo": "NOAA-OWP/soilmoistureprofiles",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "Remove memory leaks",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/t-route",
+        "upstream_repo": "NOAA-OWP/t-route",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Use named logger, coastal coupling fix, Pyton os environment fix.",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/topmodel",
+        "upstream_repo": "NOAA-OWP/topmodel",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "0.1.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ueb_bmi",
+        "upstream_repo": "NOAA-OWP/ueb_bmi",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "Define GetLogLevel",
+        "commit_summary" : "",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen",
+        "upstream_repo": "NOAA-OWP/ngen",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "",
+        "commit_summary" : "Define GetLogLevel, deleted disused code. CAT-ID not restricted to any specific data type, freed memory safety improvements, MPI Finalize fix, CICD improvements, Added unit conversion code to ForcingsEngineLumpedDataProvider. Dockerfile updates.",
+        "has_submodules": true,
+        "skip": false
+    }
+]
