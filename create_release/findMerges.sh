@@ -213,8 +213,19 @@ if [[ ${#TABLE_ROWS[@]} -eq 0 ]]; then
   exit 0
 fi
 
+# --- Compute unique repo count for the title ---
 if [[ $VERBOSE -eq 1 ]]; then
-  echo "Summary (verbose)"
+  REPOS_WITH_CHANGES_COUNT="$(
+    printf "%s\n" "${TABLE_ROWS[@]}" | awk -F'|' '{print $1}' | sort -u | wc -l | tr -d ' '
+  )"
+else
+  REPOS_WITH_CHANGES_COUNT="$(
+    printf "%s\n" "${TABLE_ROWS[@]}" | sort -u | wc -l | tr -d ' '
+  )"
+fi
+
+if [[ $VERBOSE -eq 1 ]]; then
+  echo "Summary (verbose) — Repositories with changes (${REPOS_WITH_CHANGES_COUNT})"
   echo "============================================================="
   printf "%-25s | %-10s | %-8s | %s\n" "Repository" "Date" "Commit" "Message"
   echo "-------------------------------------------------------------"
@@ -223,7 +234,7 @@ if [[ $VERBOSE -eq 1 ]]; then
     printf "%-25s | %-10s | %-8s | %s\n" "$repo" "$date" "$hash" "$msg"
   done
 else
-  echo "Repositories with changes"
+  echo "Repositories with changes (${REPOS_WITH_CHANGES_COUNT})"
   echo "============================================================="
   printf "%s\n" "${TABLE_ROWS[@]}" | sort -u
 fi
