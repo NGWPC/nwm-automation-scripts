@@ -1,0 +1,198 @@
+[
+    {
+        "repo_directory" : "~/ngwpc/repositories/bmi-cxx",
+        "upstream_repo": "NOAA-OWP/bmi-cxx",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/cfe",
+        "upstream_repo": "NOAA-OWP/cfe",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/evapotranspiration",
+        "upstream_repo": "NOAA-OWP/evapotranspiration",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lgar-c",
+        "upstream_repo": "NOAA-OWP/lgar-c",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lstm",
+        "upstream_repo": "NOAA-OWP/lstm",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-docker",
+        "upstream_repo": "NOAA-OWP/ngencerf-docker",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-server",
+        "upstream_repo": "NOAA-OWP/ngencerf-server",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-ui",
+        "upstream_repo": "NOAA-OWP/ngencerf-ui",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen-forcing",
+        "upstream_repo": "NOAA-OWP/ngen-forcing",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-cal-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-cal-mgr",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/data-assimilation-engine",
+        "upstream_repo": "NOAA-OWP/data-assimilation-engine",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-eval-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-eval-mgr",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-fcst-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-fcst-mgr",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-msw-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-msw-mgr",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-region-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-region-mgr",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-verf",
+        "upstream_repo": "NOAA-OWP/nwm-verf",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/noah-owp-modular",
+        "upstream_repo": "NOAA-OWP/noah-owp-modular",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/sac-sma",
+        "upstream_repo": "NOAA-OWP/sac-sma",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/schism",
+        "upstream_repo": "NOAA-OWP/schism",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SFINCS",
+        "upstream_repo": "NOAA-OWP/SFINCS",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SLoTH",
+        "upstream_repo": "NOAA-OWP/SLoTH",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/snow17",
+        "upstream_repo": "NOAA-OWP/snow17",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilfreezethaw",
+        "upstream_repo": "NOAA-OWP/soilfreezethaw",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilmoistureprofiles",
+        "upstream_repo": "NOAA-OWP/soilmoistureprofiles",
+        "upstream_default": "main",
+        "upstream_local_branch": "main",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/t-route",
+        "upstream_repo": "NOAA-OWP/t-route",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/topmodel",
+        "upstream_repo": "NOAA-OWP/topmodel",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ueb_bmi",
+        "upstream_repo": "NOAA-OWP/ueb_bmi",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen",
+        "upstream_repo": "NOAA-OWP/ngen",
+        "upstream_default": "master",
+        "upstream_local_branch": "master",
+        "skip": true
+    }
+]
