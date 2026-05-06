@@ -122,8 +122,10 @@ while IFS= read -r repo_dir; do
 
   echo "Checking repository: $repo_dir"
 
-  [[ -d "$repo_dir/.git" ]] || continue
-
+  if [[ ! -d "$repo_dir/.git" ]]; then
+    echo "  WARNING: Repository not found or not a git repo; skipping."
+    continue
+  fi
   pushd "$repo_dir" >/dev/null
 
   git fetch origin "$BRANCH" >/dev/null 2>&1 || true
