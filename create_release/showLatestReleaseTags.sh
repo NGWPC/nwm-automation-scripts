@@ -98,6 +98,9 @@ while IFS= read -r entry; do
 
     pushd "$repo_dir" >/dev/null
 
+    # Update remote refs and tags
+    git fetch --all --tags --prune --quiet
+
     # --- NEW: Track latest tag in this repo (any tag), for end-of-run summary ---
     # iso-strict compares cleanly as a string (YYYY-MM-DDTHH:MM:SS±HH:MM)
     latest_tag_line="$(
