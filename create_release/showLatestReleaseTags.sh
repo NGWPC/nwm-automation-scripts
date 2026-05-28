@@ -27,14 +27,24 @@ Arguments:
                   Default: ${DEFAULT_CONFIG}
   release_type    Optional. "RC" (default) or "Official".
                   RC       → use the release tag if skip is true otherwise the highest release candidate tag (-rcX)
-                  Official → only get release tag, ignore skip
+                  Official → get the highest official release/hotfix tag that matches the configured release prefix
 
 Options:
   -h, --help      Show this help message and exit.
 
-Tag behavior (RC only):
-  skip = true      → use <release> tag
-  skip = false     → use highest <release>-rc<number> tag
+Tag behavior:
+  RC:
+    skip = true    → use <release> tag
+    skip = false   → use highest <release>-rc<number> tag
+
+  Official:
+    Uses the configured release as the base release and finds the highest
+    matching final/hotfix tag by the last numeric component.
+
+    Example:
+      release = 3.1.2.0.0
+      tags    = 3.1.2.0.0, 3.1.2.0.1, 3.1.2.0.2
+      result  = 3.1.2.0.2
 
 Minimal example JSON config:
 
@@ -127,9 +137,40 @@ while IFS= read -r entry; do
     commit_hash="-"
 
     if [[ "$RELEASE_TYPE" == "Official" ]]; then
-        # Always get release tag
-        if git rev-parse -q --verify "refs/tags/${release}" >/dev/null; then
-            tag="$release"
+        # Official release behavior:
+        # Treat the configured release as the base release and find the highest
+        # matching final/hotfix tag by the last numeric component.
+        #
+        # Example:
+        #   release = 3.1.2.0.0
+        #   tags    = 3.1.2.0.0, 3.1.2.0.1, 3.1.2.0.2
+        #   result  = 3.1.2.0.2
+        release_prefix="${release%.*}"
+
+        latest_official="$(
+            git tag --list "${release_prefix}.*"               | awk -F. -v prefix="$release_prefix" '
+                    BEGIN {
+                        prefix_count = split(prefix, prefix_parts, ".")
+                    }
+                    NF == prefix_count + 1 {
+                        matches_prefix = 1
+                        for (i = 1; i <= prefix_count; i++) {
+                            if ($i != prefix_parts[i]) {
+                                matches_prefix = 0
+                                break
+                            }
+                        }
+
+                        patch = $(prefix_count + 1)
+                        if (matches_prefix && patch ~ /^[0-9]+$/) {
+                            printf "%d|%s\n", patch, $0
+                        }
+                    }
+                '               | sort -t'|' -k1,1n               | tail -1               | cut -d'|' -f2-               || true
+        )"
+
+        if [[ -n "$latest_official" ]]; then
+            tag="$latest_official"
         else
             tag="(not found)"
         fi
