@@ -1157,6 +1157,7 @@ main() {
   fi
 
   # Loop through each repository and process it (skip if flag is true)
+  GLOBAL_RETURN_CODE=0
   for (( i=0; i<repo_count; i++ )); do
     repo_directory=$(echo "$json_data" | jq -r ".[$i].repo_directory")
     release=$(echo "$json_data" | jq -r ".[$i].release")
@@ -1178,7 +1179,7 @@ main() {
     process_repo "$repo_directory" "$release" "$release_notes" "$has_submodules"
 
     # If user selected Quit, exit the loop
-    if [ "$GLOBAL_RETURN_CODE" -eq 2 ]; then
+    if [ "${GLOBAL_RETURN_CODE:-0}" -eq 2 ]; then
       echo "User chose to quit. Exiting script."
       break
     fi
