@@ -1,0 +1,264 @@
+[
+    {
+        "repo_directory" : "~/ngwpc/repositories/bmi-cxx",
+        "upstream_repo": "NOAA-OWP/bmi-cxx",
+        "release": "3.1.0.4.0",
+        "previous_release_tag": "0.1.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/cfe",
+        "upstream_repo": "NOAA-OWP/cfe",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Updated the model framework to use the nwm-ewts libraries, enhanced serialization capabilities with size reporting and compatibility improvements, and added reset-time functionality. Improved CFE consistency through unit corrections and standardized RainMelt handling. Also incorporated upstream OWP changes, removed obsolete code and OWP-specific functionality, and resolved several initialization and stability issues.",
+        "commit_summary" : "Implemented a series of updates to improve EWTS integration, serialization support, model consistency, and overall code quality. Replaced legacy logging usage with the nwm-ewts libraries and removed generic EWTS identifiers and OWP-specific actions. Enhanced serialization by adding support for reporting serialized data size, including size headers and Get_value compatibility improvements. Updated CFE behavior through unit corrections and consistent RainMelt handling across runoff models. Added reset-time functionality, resolved merge integrations from the OWP master branch, and addressed several stability issues through pointer initialization, state initialization fixes, and cleanup of obsolete test code.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/evapotranspiration",
+        "upstream_repo": "NOAA-OWP/evapotranspiration",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "3.1.0.0.0",
+        "release_notes": "Added EWTS logging integration and expanded diagnostic capabilities, improved serialization and reset-time functionality, and updated build, packaging, and CI configurations. Incorporated upstream NOAA/OWP changes and unit test updates. Also resolved several numerical stability issues and corrected model parameter handling to improve robustness and scientific consistency.",
+        "commit_summary" : "Enhanced EWTS integration and logging throughout the codebase by adding initialization support, expanding diagnostic logging, improving warning handling, and refining error-processing behavior. Improved serialization and state management through reset-time support, reset-size messaging, serialization size tracking, deserialization enhancements, and removal of duplicate serialization logic. Updated build and packaging configuration, including CMake fixes, installation improvements, CI updates, and removal of hardcoded build settings. Incorporated NOAA/OWP upstream changes and unit test updates. Additionally, improved model stability and scientific correctness through fixes to aerodynamic resistance calculations, divide-by-zero protections, log-profile handling, zero-plane displacement limits, parameter naming consistency, and psychrometric constant calculations.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lgar-c",
+        "upstream_repo": "NOAA-OWP/lgar-c",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Integrated nwm-ewts logging support, added precipitation rate output, and implemented reset-time messaging and serialization size headers. Also updated soil and groundwater parameter handling, including unit corrections, validation checks, and support for additional soil type values.",
+        "commit_summary" : "Updated the model to use the nwm-ewts logging library and introduced a module-specific logging definition rather than relying on a generic EWTS implementation. Enhanced model functionality by adding precipitation rate output and implementing reset-time messaging support. Improved serialization by adding size headers to serialized data. Corrected and validated several model parameters, including updates to groundwater-to-stream recharge units, maximum soil type handling, and soil type value validation to improve model consistency and robustness.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/lstm",
+        "upstream_repo": "NOAA-OWP/lstm",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Added nwm-ewts integration and automated installation support, implemented model serialization functionality, and improved serialization interfaces and documentation. Updated unit test workflows, incorporated upstream OWP changes, and resolved debugging issues to improve development and runtime reliability.",
+        "commit_summary" : "Enhanced the project’s integration with the nwm-ewts logging framework by adding automated installation from the GitHub repository, adopting EWTS utilities for environment variable handling, and updating the codebase to use the library consistently. Implemented model serialization capabilities, refined the serialization interface by removing unnecessary method arguments, and added supporting documentation. Updated CI workflows to install only development dependencies during unit testing, incorporated upstream OWP changes through multiple merge synchronizations, and resolved debugging issues affecting eager evaluation behavior.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-server",
+        "upstream_repo": "NOAA-OWP/ngencerf-server",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.2",
+        "release_notes": "Added comprehensive hindcast support with new APIs, validation workflows, logging, and verification capabilities. Enhanced forecast configuration and module management, expanded support for additional hydrologic formulations and data sources, and improved authentication with MFA support. Integrated EWTS across the platform, modernized Docker and deployment workflows, and delivered numerous reliability, performance, logging, validation, and operational improvements.",
+        "commit_summary" : "Expanded forecasting and hindcasting capabilities through the introduction of a comprehensive hindcast framework, including new models, endpoints, validation logic, data retrieval APIs, configuration options, logging, status tracking, and support for cold starts, calibration workflows, and verification processing. Improved forecast configuration management by adding module property persistence, import/export functionality, enhanced parameter validation, support for additional formulations and data sources, observational data integration, and geopackage handling. Strengthened authentication and security with MFA/2FA support, recovery codes, credential management improvements, and authentication workflow updates. Enhanced operational reliability through extensive logging improvements, performance optimizations, validation refinements, race-condition fixes, AWS profile support, archive handling fixes, and workflow cleanup. Modernized containerization and deployment by integrating EWTS throughout the platform, improving Docker build processes, dependency tracking, CI/CD pipelines, build reproducibility, and customer delivery workflows. Additional updates included forecast and hindcast data management improvements, Hawaii forecast enablement, retrospective workflow updates, verification enhancements, support for new hydrologic formulations, and numerous code quality, configuration, and maintenance improvements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngencerf-ui",
+        "upstream_repo": "NOAA-OWP/ngencerf-ui",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.1",
+        "release_notes": "Added a full Hindcast workflow with setup, execution, verification, results visualization, and enhanced job management. Improved plotting, logging, module property configuration, validation, and calibration integration. Enhanced MFA authentication, UI usability, error handling, and workflow reliability while aligning Docker, CI/CD, and EWTS logging support with the latest platform architecture.",
+        "commit_summary" : "Delivered a substantial enhancement of the Forecast and Hindcast user experience, including a complete Hindcast workflow with setup, run/status, results, verification, navigation, validation, help documentation, and plotting capabilities. Improved job lifecycle management through better status tracking, elapsed-time calculations, run/cancel controls, calibration integration, error handling, and recovery from failed or interrupted jobs. Expanded visualization and results functionality with improved plotting, precipitation and streamflow displays, log management, combined results views, iteration-based displays, and performance optimizations. Enhanced module property management, formulation configuration, validation workflows, domain filtering, and calibration setup. Strengthened authentication and usability through MFA/login improvements, QR code support, refined error messaging, UI consistency updates, accessibility improvements, and workflow cleanup. Additional updates included Docker and CI/CD alignment, EWTS log handling support, customer delivery improvements, download workflow changes, and numerous bug fixes, stability improvements, and interface refinements across the application.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen-forcing",
+        "upstream_repo": "NOAA-OWP/ngen-forcing",
+        "release": "3.1.2.4.0",
+        "previous_release_tag": "3.1.2.3.0",
+        "release_notes": "Enhanced the BMI Forcing Engine with expanded support for Alaska, Hawaii, AnA, and lagged-ensemble forcing products, while introducing comprehensive EWTS integration and modernized Docker/CI workflows. Refactored core forcing, metadata, and BMI components for improved maintainability, added extensive automated testing, and delivered significant performance, memory management, caching, and reliability improvements across forcing generation and regridding workflows.",
+        "commit_summary" : "Delivered major enhancements to the BMI Forcing Engine focused on scalability, maintainability, testing, and support for additional forcing datasets. Added comprehensive EWTS integration across the codebase, Docker images, and CI/CD pipelines while modernizing logging, OS utility handling, and error reporting. Expanded forcing support with Alaska NWM, Hawaii NBM, CONUS AnA, lagged ensemble updates, improved forcing configuration management, and enhanced handling of hydrologic and hydrofabric data. Refactored core architecture by separating BMI, GeoMeta, and InputForcing implementations into discretization-specific classes, improving configuration management, metadata handling, variable mapping, and serialization capabilities. Significantly improved performance and stability through memory management fixes, lazy loading, dataset lifecycle management, cache optimization, MPI cleanup handling, retry logic, file-lock handling, and forcing download optimizations. Added extensive automated testing for regridding, forcing generation, serialization, and model behavior, while improving test utilities, expected result validation, numerical tolerance handling, and documentation. Additional updates included NHF transition support, SFINCS model generation capabilities, Docker and deployment improvements, customer delivery enhancements, and numerous bug fixes, type hint updates, code cleanups, and documentation improvements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-cal-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-cal-mgr",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.0",
+        "release_notes": "Added TopoFlow and grouped realization support, including enhanced calibration workflows for DDS, PSO, and GWO algorithms. Improved validation, plotting, logging, and worker management through EWTS integration and standardized log handling. Enhanced NHF compatibility, observation data processing, and deployment workflows while delivering numerous stability, testing, and calibration reliability improvements.",
+        "commit_summary" : "Expanded calibration capabilities with support for TopoFlow and grouped realizations, including new grouped parameter handling, grouped output variables, grouped formulation workflows, and algorithm updates for DDS, PSO, and GWO. Improved validation and calibration execution by fixing realization updates across iterations, refining calibration object management, enhancing validation workflows, and correcting plot-generation logic. Enhanced logging and operational traceability through EWTS integration, standardized log naming conventions, worker-specific log storage, bootstrap logging, and improved job metadata reporting. Added support for configurable worker names, improved observation file handling through automatic detection of flow and time columns, and strengthened compatibility with NHF hydrofabrics and updated geopackage processing. Additional improvements included Docker and CI/CD updates, build flexibility enhancements, Pydantic validation fixes, t-route output corrections, customer delivery streamlining, and numerous stability, testing, and cleanup updates across the calibration framework.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-coastal",
+        "upstream_repo": "NOAA-OWP/nwm-coastal",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "3.1.1.0.0",
+        "release_notes": "Expanded coastal modeling support with major SCHISM and SFINCS enhancements, including model creation workflows, TPXO and pyTMD tidal forcing, NOAA DEM/CRM integration, flood mapping, observation-based validation, QGIS tools, and support for Alaska and Hawaii domains. Improved cluster deployment, MPI execution, regridding, plotting, and workflow automation while modernizing configuration management, documentation, testing, performance, and overall platform reliability.",
+        "commit_summary" : "Delivered a major evolution of the coastal modeling framework through expanded support for both SCHISM and SFINCS workflows, including model creation, preparation, execution, plotting, regridding, tidal forcing, observation integration, flood mapping, and QGIS tooling. Added support for TPXO and pyTMD tidal forcing, NOAA DEM and CRM topobathy datasets, Alaska and Hawaii domains, atmospheric forcing subsetting, observation-point workflows, NOAA CO-OPS integration, and advanced discharge handling. Significantly improved coastal model generation and execution through native SFINCS and SCHISM build infrastructure, MPI runtime detection, cluster deployment enhancements, Slurm integration refinements, runtime environment management, and workflow orchestration improvements. Enhanced visualization capabilities with flood-depth maps, animations, water-level comparisons, observation-based validation plots, and reusable plotting infrastructure. Refactored the codebase to modernize configuration management, model abstractions, logging, time handling, regridding, data processing, package organization, and dependency management while removing legacy compatibility layers and container-specific execution paths. Improved performance, scalability, and reliability through optimized forcing pipelines, KDTree spatial operations, cached downloads, memory reductions, chunked I/O, robust error handling, stricter validation, expanded testing, and comprehensive documentation, examples, notebooks, and deployment guidance.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-data-assimilation",
+        "upstream_repo": "NOAA-OWP/nwm-data-assimilation",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "Added precipitation time-series outputs, precipitation–streamflow plotting, and per-timestep NetCDF forecast generation aligned with NWM conventions. Updated workflows for the latest NHF schema, improved precipitation and rainmelt processing, and cleaned up NetCDF outputs, dependencies, and supporting scripts to improve usability and maintainability.",
+        "commit_summary" : "Enhanced post-processing and visualization capabilities by adding precipitation time-series output, precipitation–streamflow (P-Q) plotting, and support for generating plots without observed data. Expanded forecast output generation with the implementation of per-timestep NetCDF files designed to align with NWM NOMADS forecast dataset conventions. Updated processing workflows to support the new NHF schema, including changes for SWE, soil moisture, and catchment identifier handling. Improved precipitation calculations and summaries through updates to rainmelt and average precipitation handling. Additional updates included NetCDF cleanup to remove unnecessary variables and metadata, dependency updates, sample script improvements, removal of obsolete debugging code and data files, and general code cleanup and maintainability enhancements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-eval-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-eval-mgr",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "",
+        "commit_summary" : "",
+        "skip": true
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-ewts",
+        "upstream_repo": "NOAA-OWP/nwm-ewts",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "",
+        "release_notes": "Initial Release of the EWTS multi-language logging framework with support for C, C++, Fortran, and Python, including runtime libraries, Python packaging, structured payload handling, configurable logging, MPI-aware operation, and ngen integration. Added comprehensive documentation, examples, testing, build automation, and numerous enhancements to logging configuration, module management, performance, and maintainability.",
+        "commit_summary" : "Established the EWTS framework as a unified, multi-language logging and telemetry solution across C, C++, Fortran, and Python. Added production-ready runtime libraries, Python packaging, module registries, logger registries, bridge-based integration with ngen, configurable logger initialization, log-level management, version reporting, and support for component-specific logging. Enhanced logging behavior through improved MPI support, thread safety, log file naming controls, log truncation, environment-based configuration, module-based log splitting, bound loggers, existing logger integration, and more robust runtime initialization and reset capabilities. Introduced structured payload support with JSON payload classes, improved log parsing, payload extraction utilities, and removal of unnecessary dependencies. Expanded support for additional modules and component managers, refined generated language constants and metadata generation, and improved packaging and build processes across languages. The release also includes extensive documentation, READMEs, design guidance, examples, sample applications, unit tests, MkDocs support, and numerous usability, reliability, and maintainability improvements throughout the framework.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-fcst-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-fcst-mgr",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Added hindcasting, lagged ensemble forecasting, state-saving, warm-start support, and MPI-enabled parallel forecast execution. Refactored forecasting workflows for improved scalability, configuration management, and process control through a new execution management framework. Enhanced EWTS logging integration, forecast reliability, documentation, CI/CD workflows, and operational support for complex forecasting scenarios.",
+        "commit_summary" : "Implemented major forecasting workflow enhancements, including support for hindcasting, lagged ensemble forecasting, state saving and warm-start execution, intermediate analysis runs, separate cold-start jobs, and MPI-based parallel forecast processing. Refactored the forecast manager architecture to improve workflow orchestration, direct integration with msw-mgr, configuration caching, forecast execution management, and handling of multiple forecast runs. Added robust asynchronous forecast execution through a new ForecastExecutionManager, improving process lifecycle management, interrupt handling, status tracking, logging, and subprocess control. Enhanced operational reliability through improved state loading, forecast partitioning support, validation of hindcast intervals, restructuring of run directories, and better handling of warm-start and lagged-ensemble workflows. Integrated EWTS logging, standardized log naming and storage, improved documentation and READMEs, and updated CI/CD, Docker, and customer delivery workflows. Numerous bug fixes, logging improvements, and code quality updates were also included to improve stability and maintainability across forecasting operations.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-msw-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-msw-mgr",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.0",
+        "release_notes": "Added extensive NHF and IceFabric support across forecasting, regionalization, calibration, and realization generation workflows. Introduced NWM-compatible output variable support for multiple hydrologic models, expanded hindcasting and lagged-ensemble capabilities, and enhanced PET, Topoflow, and grouped formulation workflows. Improved EWTS logging integration, geopackage processing, forecast execution, testing, and overall reliability while modernizing configuration and hydrofabric management.",
+        "commit_summary" : "Delivered major enhancements across forecasting, regionalization, calibration, and hydrofabric integration, with a strong focus on supporting the NextGen Hydrofabric (NHF) and IceFabric frameworks. Added comprehensive NHF support through updates to realization writing, forcing paths, configuration generation, variable mappings, hydrofabric processing, geopackage handling, routing configuration, and testing. Expanded forecast capabilities with hindcasting, lagged ensembles, state saving, warm-start execution, MPI-enabled forecasting, forecast output variables, and improved time-handling logic. Introduced NWM-compatible output variable support across numerous hydrologic models, including CFE, SAC-SMA, SMP, LASAM, LSTM, Topmodel, and Topoflow-Glacier, with associated adapter mappings, regionalization support, forecast outputs, and validation workflows. Added PET configuration support, enhanced grouped formulation and Topoflow workflows, improved regionalization and calibration integration, and expanded IceFabric-based configuration generation for a broad range of models. Modernized logging through EWTS integration, improved configuration management and realization generation, optimized geopackage processing, strengthened testing and CI coverage, and delivered numerous bug fixes, refactors, documentation updates, and performance improvements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-region-mgr",
+        "upstream_repo": "NOAA-OWP/nwm-region-mgr",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.0",
+        "release_notes": "Added comprehensive NHF, HydroATLAS, and oCONUS support to regionalization workflows, including enhanced crosswalk generation, geopackage processing, donor selection, manual pairing, and attribute management. Expanded NGEN integration, improved configuration and calibration workflows, and added new utilities, testing, logging, and documentation to improve scalability, usability, and regionalization accuracy.",
+        "commit_summary" : "Expanded and modernized regionalization workflows to support the NextGen Hydrofabric (NHF), HydroATLAS, and oCONUS domains through extensive updates to crosswalk generation, geopackage processing, attribute ingestion, donor selection, calibration pairing, and configuration management. Added new utilities for creating catchment, divide, HUC12, and gage crosswalks; processing hydrofabric and attribute datasets; generating pseudo calibration datasets; downloading and processing geopackages; and supporting NGEN simulations across multiple domains. Enhanced formulation and parameter regionalization by improving manual pairing workflows, validation logic, donor selection controls, metric handling, attribute processing, and support for calibrated basin selection. Added support for running NGEN directly within the regionalization framework, including configuration updates, process management, multi-user support, resource allocation controls, and integration with IceFabric-based workflows. Improved logging, testing, documentation, and user guidance with expanded unit and integration test coverage, updated user guides and technical references, NHF migration documentation, and numerous usability, performance, memory optimization, bug-fix, and cleanup improvements throughout the codebase.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-rte",
+        "upstream_repo": "NOAA-OWP/nwm-rte",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "",
+        "release_notes": "Initial Release. Expanded forecasting support with lagged ensembles, MPI execution, LSTM integration, NWM output variables, IceFabric/NHF compatibility, and improved calibration and forecast workflows. Added comprehensive automated testing, GitHub Actions and pytest integration, enhanced Dev Container and debugging support, and modernized Docker, CI/CD, Slurm, and deployment tooling. Improved documentation, configuration management, logging, regionalization support, and overall workflow reliability and maintainability.",
+        "commit_summary" : "Delivered a major modernization of the RTE workflow, development environment, testing framework, forecasting capabilities, and deployment tooling. Expanded forecast support with lagged ensembles, MPI-enabled execution, default realizations, cold starts, calibration-driven forecasts, LSTM integration, NWM output variables, configurable forcing products, and improved handling of forecast, calibration, and testing workflows. Refactored forecast execution into dedicated scripts and configuration models, added support for IceFabric and NHF hydrofabrics, improved forecast configuration management, and enhanced forecast validation and testing. Significantly expanded automated testing with new unit, integration, calibration, forecast, and execution test frameworks, GitHub Actions support, pytest integration, test result analysis tools, and automated workflow validation. Modernized developer tooling through extensive Dev Container, debugger, documentation, MkDocs, CI/CD, and build-system enhancements, while improving package sourcing flexibility, Docker image management, GitHub workflow automation, Slurm integration, multi-user support, and reproducible deployments. Additional improvements included enhanced logging, data setup automation, WCOSS compatibility, regionalization support, calibration workflow refactoring, code cleanup, CLI usability improvements, dependency management updates, and extensive documentation and user-guidance enhancements throughout the project.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/nwm-verf",
+        "upstream_repo": "NOAA-OWP/nwm-verf",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.0",
+        "release_notes": "Added NHF-based verification and hindcast evaluation support, including verification plotting, flexible lead-time handling, and new sample configurations. Expanded observational data support with TxDOT streamflow integration and enhanced gage crosswalks. Improved metric calculation reliability, error handling, NHF geopackage processing, oCONUS support, configuration validation, and CI/CD alignment while delivering numerous stability, documentation, and usability improvements.",
+        "commit_summary" : "Expanded verification and evaluation capabilities with comprehensive support for NHF-based simulations and hindcast verification workflows, including new configuration options, sample configurations, lead-time handling improvements, and automated generation of verification plots. Added support for non-integer and floating-point lead times, single-time-step hindcast datasets, and improved forecast-to-observation alignment to increase accuracy and flexibility in verification analyses. Enhanced observational data integration by adding support for Texas Department of Transportation (TxDOT) streamflow observations, expanding gage crosswalk datasets, and improving gage selection and filtering capabilities. Strengthened metric calculation reliability through improved validation, stricter error handling for insufficient or missing data, better handling of edge cases in paired datasets, scientific notation formatting for large metric values, and more informative user-facing error messages. Added utilities for downloading and processing NHF geopackages, improved support for oCONUS domains, enhanced configuration validation and logging through Pydantic integration, and aligned Docker and CI/CD workflows with current NGWPC deployment patterns. Additional improvements included dependency updates, Dask-related stability fixes, logging refinements, documentation updates, and general code cleanup and maintainability enhancements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/noah-owp-modular",
+        "upstream_repo": "NOAA-OWP/noah-owp-modular",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "Added reset-time and state serialization support for Noah-OWP BMI, including improved state transfer, size tracking, buffer validation, and error handling. Integrated nwm-ewts logging, fixed BMI unit conversion issues, and improved overall reliability of state save/restore operations.",
+        "commit_summary" : "Improved Noah-OWP BMI state management by implementing and refining reset-time and serialization support for state save/restore workflows. Reworked serialization to use integer-based storage with size tracking, buffer validation, header metadata, and improved error handling for memory allocation failures. Enhanced state restoration support with additional time-related variables and serialization transfer mechanisms. Also integrated nwm-ewts logging, corrected BMI unit conversion issues, and resolved compile-time and code-maintenance issues.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/sac-sma",
+        "upstream_repo": "NOAA-OWP/sac-sma",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "Added reset-time and enhanced state serialization support for SAC-SMA, including GIUH queue persistence, size tracking, and improved state restoration. Expanded SMP coupling and model outputs with rain+melt runoff, ponded depth, and GIUH-based flow calculations. Integrated nwm-ewts logging, corrected BMI unit conversions, and delivered various code cleanup and reliability improvements.",
+        "commit_summary" : "Enhanced SAC-SMA state management and model coupling by implementing reset-time functionality and reworking serialization to support robust state save/restore operations. Added integer-based serialization with size tracking, header metadata, validation checks, GIUH runoff queue serialization, and improved state transfer handling. Expanded model coupling capabilities by capturing soil storage content and storage changes for interaction with SMP. Updated SAC-SMA outputs to include rain-plus-melt runoff and NWM ponded depth variables, while adding support for GIUH-corrected channel inflow calculations. Also integrated nwm-ewts logging, corrected BMI unit conversion issues, cleaned up legacy code and configuration handling, and resolved merge and maintenance-related issues.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/SLoTH",
+        "upstream_repo": "NOAA-OWP/SLoTH",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "3.1.0.4.0",
+        "release_notes": "Added serialization messaging support with state transfer capabilities, size headers, and standardized message handling. Improved serialization reliability through validation, variable mapping enhancements, and fixes for iterator and type-handling issues.",
+        "commit_summary" : "Implemented serialization messaging support to enable model state transfer and persistence workflows. Added serialization size tracking through header metadata, introduced standardized serialization message constants, and improved message handling robustness by preventing conflicts between serialization messages and model variables. Enhanced reliability through iterator and type-punning fixes, conditional variable name mapping, and general serialization infrastructure improvements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/snow17",
+        "upstream_repo": "NOAA-OWP/snow17",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Updates to snow modeling behavior and integration",
+        "commit_summary" : "Integrated EWTS logging library. Updated state serialization, deserialization, reset-time, and restart handling. Updated geospatial metadata, regridding, domain, and gage handling. Updated hydrologic model outputs, model coupling, and model-specific runtime behavior. Corrected unit conversions and size/type reporting.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilfreezethaw",
+        "upstream_repo": "NOAA-OWP/soilfreezethaw",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.1",
+        "release_notes": "Added nwm-ewts logging integration and EWTS-enabled unit tests for SFT. Implemented reset-time support for state management workflows and expanded unit test coverage to improve reliability and maintainability.",
+        "commit_summary" : "Integrated the nwm-ewts logging framework throughout SFT, replacing generic EWTS identifiers with module-specific logging definitions and extending EWTS support to unit tests. Added reset-time functionality to support state save/restore workflows and improved test coverage through unit test enhancements and validation updates.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/soilmoistureprofiles",
+        "upstream_repo": "NOAA-OWP/soilmoistureprofiles",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Added nwm-ewts logging integration and reset-time support for improved state management. Enhanced SAC-SMA/SMP coupling, reduced duplicate warning messages, improved soil moisture initialization handling, and updated build dependencies to support the new coupling capabilities.",
+        "commit_summary" : "Integrated the nwm-ewts logging framework with module-specific logging definitions, eliminating reliance on generic EWTS identifiers. Added reset-time support through a new SetValue option to improve state management and restart workflows. Enhanced model robustness by suppressing duplicate warning messages and refining soil moisture initialization behavior. Implemented and refined coupling support between SAC-SMA and SMP, including required build-system updates and dependency management, while removing unnecessary coupling-related classes and reverting unneeded build configuration changes.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/topmodel",
+        "upstream_repo": "NOAA-OWP/topmodel",
+        "release": "3.1.2.1.0",
+        "previous_release_tag": "3.1.2.0.0",
+        "release_notes": "",
+        "commit_summary" : "Integrated the nwm-ewts logging framework and removed reliance on generic EWTS identifiers. Added support for new NWM output variables, including ponded depth and surface-water baseflow flux, while updating precipitation-rate outputs to align with standardized BMI variable definitions. Implemented reset-time signaling to support state save/restore workflows and improve model restart capabilities.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/topoflow-glacier",
+        "upstream_repo": "NOAA-OWP/topoflow-glacier",
+        "release": "3.1.2.0.0",
+        "previous_release_tag": "",
+        "release_notes": "Initial Release. Expanded TopoFlow-Glacier integration with new NWM-compatible output variables, improved BMI support, corrected unit handling, and enhanced time-management functionality. Added nwm-ewts logging integration, expanded testing and example cases, improved plotting and configuration support, and delivered numerous stability, interoperability, and maintenance improvements across the model.",
+        "commit_summary" : "Integrated and matured TopoFlow-Glacier support within the modeling framework, including BMI enhancements, expanded output variable support, improved time management, and interoperability with NWM workflows. Added new hydrologic outputs such as precipitation, runoff depth, ponded depth, snow-water equivalent mass, rain/snow transition temperature, and other NWM-compatible variables, while correcting units and variable mappings to align with BMI and NWM standards. Integrated the nwm-ewts logging framework, refactored logging configuration, improved environment-variable handling, and enhanced test coverage with new unit tests and validation cases. Strengthened model stability through numerous bug fixes related to time handling, function implementations, initialization, finalization, output generation, and glacier physics calculations. Additional updates included support for running TopoFlow-Glacier with NWM formulations, plotting enhancements, expanded example datasets and test cases, configuration improvements, documentation updates, and general cleanup and maintenance work.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/t-route",
+        "upstream_repo": "NOAA-OWP/t-route",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.0",
+        "release_notes": "Added comprehensive NHF routing and BMI integration to t-route, including flowpath discretization, flow scaling, uplink routing, serialization messaging, and improved coastal coupling support. Enhanced routing diagnostics, testing, and CONUS-scale performance while improving memory management, forcing generation, result processing, logging, and overall routing accuracy and scalability.",
+        "commit_summary" : "Delivered major enhancements to t-route with comprehensive NHF integration, BMI support, routing diagnostics, performance optimizations, and improved scalability for large-domain simulations. Added NHF routing capabilities, flowpath discretization, uplink routing, flow scaling, catchment-flow distribution updates, and support for routing through BMI interfaces. Expanded state-management capabilities through serialization messaging, time synchronization improvements, and coastal coupling integration. Improved routing accuracy and stability with numerous fixes to qlat handling, merged reaches, forcing generation, diagnostics, routing calculations, and result processing. Added extensive diagnostic, testing, and validation infrastructure, including CONUS-scale testing, routing diagnostics, flow animations, forcing-generation tools, and physics-validation workflows. Integrated the nwm-ewts logging framework, modernized logging and configuration management, and improved Docker, build, and dependency handling. Additional work included memory-management enhancements, batching of routing computations, NHF geopackage support, reservoir and channel-loss modeling improvements, coastal coupling support, and extensive code refactoring to improve performance, maintainability, and scalability.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ueb_bmi",
+        "upstream_repo": "NOAA-OWP/ueb_bmi",
+        "release": "3.1.2.2.0",
+        "previous_release_tag": "3.1.2.1.0",
+        "release_notes": "Added nwm-ewts logging integration, duplicate-warning suppression, and warning throttling for cleaner operational logs. Expanded UEB output variable support, updated unit handling, and implemented reset-time messaging and compile-time output suppression to improve state-management and runtime behavior.",
+        "commit_summary" : "Enhanced UEB integration by adopting the nwm-ewts logging framework with module-specific logging definitions and improved warning management. Added throttling and suppression of duplicate warning messages to reduce log noise and improve operational visibility. Expanded model outputs with new output variables, updated output ordering, and corrected unit conversions to align with NWM and BMI expectations. Added support for reset-time messaging and compile-time output suppression, while also incorporating various code cleanup, formatting, and maintenance improvements.",
+        "skip": false
+    },
+    {
+        "repo_directory" : "~/ngwpc/repositories/ngen",
+        "upstream_repo": "NOAA-OWP/ngen",
+        "release": "3.1.2.3.0",
+        "previous_release_tag": "3.1.2.2.0",
+        "release_notes": "Added comprehensive state saving, loading, hot-start, and cold-start support for Multi-BMI formulations, including T-Route state persistence and Boost-based serialization. Integrated nwm-ewts logging across ngen and submodules, expanded NHF support, introduced runtime mass-balance validation, and improved MPI, Python, forcing, and serialization reliability. Also modernized Docker, CI/CD, testing, and deployment workflows while incorporating numerous model and submodule updates.",
+        "commit_summary" : "Delivered major enhancements to ngen's state management, logging, BMI integration, NHF support, and runtime reliability. Implemented comprehensive state saving, loading, hot-start, and cold-start capabilities for Multi-BMI formulations using Boost serialization, including new APIs, configuration handling, file-based persistence, T-Route state support, and Fortran interoperability improvements. Integrated the nwm-ewts logging framework throughout ngen and its submodules, updated Docker and CI/CD workflows, and improved build and deployment processes. Expanded NHF support with sentinel feature handling, hydrofabric compatibility updates, T-Route integration, catchment/nexus result routing, and improved geometry processing. Added runtime mass-balance checking through a new BMI protocol framework, improved MPI stability and Python interpreter lifecycle management, enhanced forcing and NetCDF handling, and resolved numerous memory-management, serialization, testing, and operational reliability issues. The release also includes extensive submodule updates, documentation improvements, Docker modernization, and customer-delivery workflow enhancements.",
+        "has_submodules": true,
+        "skip": false
+    }
+]
