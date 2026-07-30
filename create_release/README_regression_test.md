@@ -140,6 +140,8 @@ These are the most involved scenarios, since they need to prove a submodule's gi
 
 Every one of the first four passes `--automatic-submodules` explicitly to `run_release`, since `createRelease.sh`'s own default is now manual (a pause, not an update) — without that flag none of these runs would touch a gitlink at all, and every SHA assertion would simply fail.
 
+> **Known issue:** `ngwpc-candidate`, `ngwpc-release`, and their `-pw` counterparts can't be deleted on origin — GitHub branch protection blocks it, and `reset_test_repos.sh --nuke` can only remove them locally (see its own comments). That means there's no real way to fully reset these branches between runs; whatever state they're in on GitHub carries forward. Most of the time that's harmless, but the submodule pointer-update tests check an *exact* SHA rather than just "did something change," so if one of these branches has drifted out of sync with what a given repo's history expects — from an interrupted earlier run, a manual experiment, or just running the suite many times — a test can fail (or intermittently pass/fail) for reasons that have nothing to do with the code under test. If a submodule pointer-update failure doesn't match what the log shows `createRelease.sh` actually doing, suspect drift on these protected branches before assuming a real regression — at the moment, resolving it means someone with admin/bypass rights resetting the branch on GitHub directly.
+
 ---
 
 ## Per-Check Logging
