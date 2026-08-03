@@ -1,28 +1,35 @@
 #!/usr/bin/env python3
-"""Print the release tag for every repo the PW cluster release deploy needs.
+"""Resolve the release tag for every repo the PW cluster release deploy needs.
 
 The release process saves its per-repo release versions in a
 createReleaseConfig json under create_release/jsons/ in this repo. This
 script reads that json (the newest dated file by default), maps each deploy
-repo to its "release" value, and prints one VAR=TAG line per repo using the
-same variable names and order as the "Deploy the Release on the Cluster"
-section of the PW Confluence doc. Paste the printed lines into the deploy
-terminal session and the rest of the deploy steps can use the variables.
+repo to its "release" value, and prints one "export VAR=TAG" line per repo
+using the same variable names and order as the "Deploy the Release on the
+Cluster" section of the PW Confluence doc.
+
+To load the variables straight into your CURRENT terminal session (so the
+rest of the deploy steps can use them without setting anything by hand),
+source the companion script, which runs this one and evals its output:
+
+  source parallel_works_scripts/get_release_tags.sh
+  source parallel_works_scripts/get_release_tags.sh --rc 4
+
+Running this python script directly still works: paste or eval its stdout.
 
 By default every tag is verified to exist on the NGWPC GitHub repo with
 git ls-remote before anything is printed, so a config that was never pushed,
 or a tag that was never created, fails loudly instead of quietly deploying
 the wrong versions. Status and warnings go to stderr; stdout carries only
-the VAR=TAG lines, so output can be redirected or eval'd safely.
+the export lines, so output can be redirected or eval'd safely.
 
 Repos that deploy on both AWS and PW will carry two tag variants per release:
 a bare tag (X.Y.Z, X.Y.Z-rcN) and a -pw tag (X.Y.Z-pw, X.Y.Z-rcN-pw). Pass
 --pw to select the -pw variants; the default is the bare tags.
 
 Examples:
+  source parallel_works_scripts/get_release_tags.sh --rc 4
   python3 parallel_works_scripts/get_release_tags.py
-  python3 parallel_works_scripts/get_release_tags.py --rc 4
-  python3 parallel_works_scripts/get_release_tags.py --pw
   python3 parallel_works_scripts/get_release_tags.py --rc 4 --pw
   python3 parallel_works_scripts/get_release_tags.py --json create_release/jsons/createReleaseConfig_20260609.json --no-verify
 """
@@ -94,8 +101,9 @@ def tag_exists(repo, tag):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Print the VAR=TAG lines for a PW cluster release deploy "
-                    "from a createReleaseConfig json.")
+        description="Print the export VAR=TAG lines for a PW cluster release "
+                    "deploy from a createReleaseConfig json (source "
+                    "get_release_tags.sh to load them into your shell).")
     parser.add_argument("--json", type=Path, default=None,
                         help="config file to read (default: the newest dated "
                              "createReleaseConfig*.json in %s)" % JSONS_DIR)
@@ -160,7 +168,7 @@ def main():
                                 % (repo, tag, GITHUB_ORG, repo))
                 continue
             print("verified %s %s" % (repo, tag), file=sys.stderr)
-        lines.append("%s=%s" % (var, tag))
+        lines.append("export %s=%s" % (var, tag))
 
     if problems:
         print("", file=sys.stderr)
