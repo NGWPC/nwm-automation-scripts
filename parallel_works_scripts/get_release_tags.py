@@ -6,14 +6,16 @@ createReleaseConfig json under create_release/jsons/ in this repo. This
 script reads that json (the newest dated file by default), maps each deploy
 repo to its "release" value, and prints one "export VAR=TAG" line per repo
 using the same variable names and order as the "Deploy the Release on the
-Cluster" section of the PW Confluence doc.
+Cluster" section of the PW Confluence doc. The release value from the json
+is used exactly as written, release candidate or final; this script never
+builds or appends rc parts.
 
 To load the variables straight into your CURRENT terminal session (so the
 rest of the deploy steps can use them without setting anything by hand),
 source the companion script, which runs this one and evals its output:
 
   source parallel_works_scripts/get_release_tags.sh
-  source parallel_works_scripts/get_release_tags.sh --rc 4
+  source parallel_works_scripts/get_release_tags.sh --pw
 
 Running this python script directly still works: paste or eval its stdout.
 
@@ -24,13 +26,13 @@ the wrong versions. Status and warnings go to stderr; stdout carries only
 the export lines, so output can be redirected or eval'd safely.
 
 Repos that deploy on both AWS and PW will carry two tag variants per release:
-a bare tag (X.Y.Z, X.Y.Z-rcN) and a -pw tag (X.Y.Z-pw, X.Y.Z-rcN-pw). Pass
---pw to select the -pw variants; the default is the bare tags.
+a bare tag and a -pw tag (the bare tag with -pw appended). Pass --pw to
+select the -pw variants; the default is the bare tags.
 
 Examples:
-  source parallel_works_scripts/get_release_tags.sh --rc 4
+  source parallel_works_scripts/get_release_tags.sh
+  source parallel_works_scripts/get_release_tags.sh --pw
   python3 parallel_works_scripts/get_release_tags.py
-  python3 parallel_works_scripts/get_release_tags.py --rc 4 --pw
   python3 parallel_works_scripts/get_release_tags.py --json create_release/jsons/createReleaseConfig_20260609.json --no-verify
 """
 
@@ -107,25 +109,13 @@ def main():
     parser.add_argument("--json", type=Path, default=None,
                         help="config file to read (default: the newest dated "
                              "createReleaseConfig*.json in %s)" % JSONS_DIR)
-    parser.add_argument("--rc", type=int, metavar="N",
-                        help="deploy release candidate N: appends -rcN to "
-                             "every tag (default: the official release tags)")
-    parser.add_argument("--suffix", default="",
-                        help="append an arbitrary string to every tag; a "
-                             "value starting with a dash needs the = form, "
-                             "e.g. --suffix=-something")
     parser.add_argument("--pw", action="store_true",
-                        help="select the -pw tag variants: appends -pw after "
-                             "any rc part (X.Y.Z-pw, X.Y.Z-rcN-pw)")
+                        help="select the -pw tag variants: appends -pw to "
+                             "every tag from the config")
     parser.add_argument("--no-verify", action="store_true",
                         help="skip checking that each tag exists on GitHub")
     args = parser.parse_args()
-    if args.rc is not None and args.suffix:
-        parser.error("use either --rc or --suffix, not both")
-    if args.rc is not None:
-        args.suffix = "-rc%d" % args.rc
-    if args.pw:
-        args.suffix += "-pw"
+    suffix = "-pw" if args.pw else ""
 
     config_path = args.json or newest_config(JSONS_DIR)
     if config_path is None or not config_path.is_file():
@@ -152,7 +142,7 @@ def main():
         if not release:
             problems.append("%s: empty release value in the config" % repo)
             continue
-        tag = release + args.suffix
+        tag = release + suffix
         if entry.get("skip"):
             print("WARNING: %s is marked skip in the config (not re-released "
                   "this round); using its listed tag %s" % (repo, tag),
