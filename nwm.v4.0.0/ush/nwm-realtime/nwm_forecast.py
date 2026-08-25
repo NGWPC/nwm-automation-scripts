@@ -385,6 +385,25 @@ class NWMForecast(ABC):
            else:
                 print("WARNING: Previous RFC Reservoir timeseries does not exist or is empty!")
 
+        #
+        # Copy USGS output timeslices
+        #
+        usgs_path = os.path.join(self.comout, "usgs_timeslices")
+        working_usgs_path = os.path.join(paths.host_run_dir, "usgs_timeslices")
+        if os.path.isdir( usgs_path ) and any(os.scandir(usgs_path)):
+            shutil.copytree( usgs_path, working_usgs_path, dirs_exist_ok=True )
+        else:
+            print("WARNING: USGS timeslices does not exist or is empty! Skipping USGS data assimilation!")
+
+        # Copy the previous day USGS output timeslices
+        if self.start_time.hour <= 6 or self.start_time.date() < self.t0.date():
+           usgs_path = os.path.join(self.previous_day_comout, "usgs_timeslices")
+           working_usgs_path = os.path.join(paths.host_run_dir, "usgs_timeslices")
+           if os.path.isdir( usgs_path ) and any(os.scandir(usgs_path)):
+                shutil.copytree( usgs_path, working_usgs_path, dirs_exist_ok=True )
+           else:
+                print("WARNING: Previous day USGS timeslices does not exist or is empty!")
+
     # ------------------------------------------------------------------ #
     # ecFlow / container helpers  (shared by all configurations)
     # ------------------------------------------------------------------ #

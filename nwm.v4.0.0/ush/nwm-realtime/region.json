@@ -5,16 +5,16 @@
       "id": "03S",
       "nprocs": 2,
       "hydrofabric": "",
-      "formulation_assignment": "/ngen-app/ngen-python/lib/python3.11/site-packages/mswm/example_inputs/regionalization/vpu_03S/formulation_assignment.csv",
-      "catchment_group": "/ngen-app/ngen-python/lib/python3.11/site-packages/mswm/example_inputs/regionalization/vpu_03S/catchment_groups.csv"
+      "formulation_assignment": "/ngen-app/ngen-python/lib/python3.12/site-packages/mswm/example_inputs/regionalization/vpu_03S/formulation_assignment.csv",
+      "catchment_group": "/ngen-app/ngen-python/lib/python3.12/site-packages/mswm/example_inputs/regionalization/vpu_03S/catchment_groups.csv"
     },
     {
       "type": "vpu",
       "id": "03N",
       "nprocs": 6,
       "hydrofabric": "",
-      "formulation_assignment": "/ngen-app/ngen-python/lib/python3.11/site-packages/mswm/example_inputs/regionalization/vpu_03N/formulation_assignment.csv",
-      "catchment_group": "/ngen-app/ngen-python/lib/python3.11/site-packages/mswm/example_inputs/regionalization/vpu_03N/catchment_groups.csv"
+      "formulation_assignment": "/ngen-app/ngen-python/lib/python3.12/site-packages/mswm/example_inputs/regionalization/vpu_03N/formulation_assignment.csv",
+      "catchment_group": "/ngen-app/ngen-python/lib/python3.12/site-packages/mswm/example_inputs/regionalization/vpu_03N/catchment_groups.csv"
     }
   ]
 }

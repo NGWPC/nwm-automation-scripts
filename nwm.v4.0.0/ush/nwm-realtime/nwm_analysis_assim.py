@@ -158,6 +158,12 @@ class AnalysisAssim(NWMForecast):
         else:
             print("WARNING: RFC Reservoir timeseries not found! Skipping reservoir data assimilation!")
 
+        working_usgs_path = os.path.join(paths.host_run_dir, "usgs_timeslices")
+        if os.path.isdir( working_usgs_path ) and any(os.scandir(working_usgs_path)):
+            docker_args += f' -usgs {os.path.join(paths.container_run_dir, "usgs_timeslices")}'
+        else:
+            print("WARNING: UGS timeslices not found! Skipping streamflow data assimilation!")
+
         rc = self._docker_run(docker_args)
         if rc is None or rc != 0:
             print(
@@ -222,6 +228,12 @@ class AnalysisAssim(NWMForecast):
             docker_args += f' -rfc {os.path.join(paths.container_run_dir, "rfc_timeseries")}'
         else:
             print("WARNING: RFC Reservoir timeseries not found! Skipping reservoir data assimilation!")
+
+        working_usgs_path = os.path.join(paths.host_run_dir, "usgs_timeslices")
+        if os.path.isdir( working_usgs_path ) and any(os.scandir(working_usgs_path)):
+            docker_args += f' -usgs {os.path.join(paths.container_run_dir, "usgs_timeslices")}'
+        else:
+            print("WARNING: UGS timeslices not found! Skipping streamflow data assimilation!")
 
         rc = self._docker_run(docker_args)
         if rc is None or rc != 0:
@@ -315,6 +327,12 @@ class AnalysisAssim(NWMForecast):
                else:
                    print("WARNING: RFC Reservoir timeseries not found! Skipping reservoir data assimilation!")
 
+               working_usgs_path = os.path.join(paths.host_run_dir, "usgs_timeslices")
+               if os.path.isdir( working_usgs_path ) and any(os.scandir(working_usgs_path)):
+                   docker_args += f' -usgs {os.path.join(paths.container_run_dir, "usgs_timeslices")}'
+               else:
+                   print("WARNING: UGS timeslices not found! Skipping streamflow data assimilation!")
+
                rc = self._docker_run(docker_args)
             else:
                rc = self._docker_restart(src_dir, dst_dir, checkpoint_dir)
@@ -368,6 +386,12 @@ class AnalysisAssim(NWMForecast):
             docker_args += f' -rfc {os.path.join(paths.container_run_dir, "rfc_timeseries")}'
         else:
             print("WARNING: RFC Reservoir timeseries not found! Skipping reservoir data assimilation!")
+
+        working_usgs_path = os.path.join(paths.host_run_dir, "usgs_timeslices")
+        if os.path.isdir( working_usgs_path ) and any(os.scandir(working_usgs_path)):
+            docker_args += f' -usgs {os.path.join(paths.container_run_dir, "usgs_timeslices")}'
+        else:
+            print("WARNING: UGS timeslices not found! Skipping streamflow data assimilation!")
 
         rc = self._docker_run(docker_args)
         if rc is None or rc != 0:
